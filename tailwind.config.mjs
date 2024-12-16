@@ -15,6 +15,10 @@ export default {
           dark: '#92400E', // Amarillo oscuro
         },
       },
+      fontFamily: {
+        titles: ["Avenir, font-sans"],
+        euphemia: ["euphemia, font-sans"]
+      }
     },
   },
   plugins: [
