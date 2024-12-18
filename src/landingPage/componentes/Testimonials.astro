@@ -1,24 +1,31 @@
 ---
+import TestimonialCards from "./Testimonials/TestimonialCards.astro";
+
+type TestimonialsCard = {
+  message: string;
+  name: string;
+  from: string;
+};
+
+const test = {
+  message: '"Great service and amazing quality! Highly recommend."',
+  name: "Markus Koal",
+  from: "Facebook",
+};
+
+const testimonials: Array<TestimonialsCard> = [test, test, test, test];
 ---
 
-<div class="relative w-full text-white  max-w-4xl mx-auto overflow-hidden">
-    <div id="carousel" class="flex transition-transform duration-500">
-        <div class="w-1/4 flex-shrink-0 p-6">
-            <blockquote class="text-lg italic">"Great service and amazing quality! Highly recommend."</blockquote>
-            <a href="#" class="text-primary hover:text-white mt-4 block text-right ">Ver Mas</a>
-        </div>
-        <div class="w-1/4 flex-shrink-0 p-6">
-            <blockquote class="text-lg italic">"Great service and amazing quality! Highly recommend."</blockquote>
-            <a href="#" class="text-primary hover:text-white mt-4 block text-right">Ver Mas</a>
-        </div>
-        <div class="w-1/4 flex-shrink-0 p-6">
-            <blockquote class="text-lg italic">"Great service and amazing quality! Highly recommend."</blockquote>
-            <a href="#" class="text-primary hover:text-white mt-4 block text-right">Ver Mas</a>
-        </div>
-        <div class="w-1/4 flex-shrink-0 p-6">
-            <blockquote class="text-lg italic">"Great service and amazing quality! Highly recommend."</blockquote>
-            <a href="#" class="text-primary hover:text-white mt-4 block text-right">Ver Mas</a>
-        </div>
-    </div>
+<div class="text-white bg-black min-h-[25vh] w-full">
+  <div class="container flex mx-auto items-center h-full">
+    {
+      testimonials.map((testimonial: TestimonialsCard) => (
+        <TestimonialCards
+          name={testimonial.name}
+          message={testimonial.message}
+          from={testimonial.from}
+        />
+      ))
+    }
   </div>
-  
+</div>
