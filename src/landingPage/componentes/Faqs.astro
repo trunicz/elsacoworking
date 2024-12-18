@@ -1,0 +1,57 @@
+---
+import FAQsComp from '../../core/components/FaqsComponent.astro';
+
+type FAQsComp = {
+	question: string;
+	answer: string; 
+};
+
+const cards: Array<FAQsComp> = [
+	{
+		question: "¿Qué es un coworking y cómo funciona?",
+		answer: 
+			`Un coworking es un espacio compartido donde profesionales, emprendedores y empresas pueden trabajar de manera flexible. Ofrecemos diferentes planes que incluyen acceso a escritorios, oficinas privadas, salas de juntas y servicios adicionales como Wi-Fi de alta velocidad, cafetería y áreas comunes para networking.`
+		,
+	},
+	{
+		question: "¿Qué servicios están incluidos en los planes?",
+		answer: 
+			`Nuestros planes incluyen acceso a internet de alta velocidad, uso de salas de juntas (dependiendo del plan), servicios básicos (luz, agua, limpieza), impresoras, café y té ilimitados, y eventos de networking organizados por la comunidad.`
+		,
+	},
+	{
+		question: "¿Puedo rentar una sala de juntas sin ser miembro?",
+		answer: 
+	`¡Claro! Ofrecemos la opción de renta por hora o día para salas de juntas, incluso si no eres miembro. Solo necesitas reservar con anticipación para asegurarte de que haya disponibilidad.`
+		,
+	},
+	{
+		question: "¿Puedo usar el coworking solo por un día?",
+		answer: 
+	`Sí, contamos con un pase diario que te permite disfrutar de nuestras instalaciones y servicios por un día. Este pase es ideal si necesitas un lugar tranquilo y profesional para trabajar de manera ocasional.`
+		,
+	},
+	{
+		question: "¿Qué medidas de seguridad implementan?",
+		answer: 
+	`Nuestra prioridad es tu seguridad. Contamos con cámaras de vigilancia, acceso controlado por tarjetas o códigos, personal de recepción durante el horario laboral y protocolos de limpieza regulares para mantener un entorno seguro y cómodo.`
+		,
+	},
+];
+---
+<section class="w-full mx-auto flex justify-center p-10">
+	<main class="w-full">
+		<!-- Services & Plans Heading -->
+		<h1 class=" text-center text-4xl mx-auto font-titles font-black	">
+			Preguntas Frecuentes
+		</h1>
+		<div>
+            {cards.map((card) => (
+                <FAQsComp
+                    question={card.question}
+                    answer={card.answer}
+                />
+            ))}
+        </div>
+	</main>
+</section>
