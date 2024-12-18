@@ -1,0 +1,13 @@
+---
+const { message, name, from } = Astro.props;
+---
+
+<div class="h-full flex flex-col justify-center">
+  <div class="size-6 mb-4 bg-white rounded-full"></div>
+  <blockquote class="text-lg italic">
+    {message}
+  </blockquote>
+  <p class="text-sm mt-4">
+    {name} - <span>{from}</span>
+  </p>
+</div>
