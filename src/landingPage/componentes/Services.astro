@@ -5,6 +5,7 @@ type ServicePlansCards = {
   titleCard: string;
   descriptionCard: Node | string;
   cta_text: string;
+  variant: "primary" | "secondary";
 };
 
 const cards: Array<ServicePlansCards> = [
@@ -12,22 +13,25 @@ const cards: Array<ServicePlansCards> = [
     titleCard: "Plan Básico",
     descriptionCard: `Ideal para pequeños proyectos o emprendedores que buscan iniciar con lo esencial. Incluye herramientas básicas, diseño responsivo, soporte estándar por correo electrónico y almacenamiento limitado.`,
     cta_text: "Ver Planes",
+    variant: "secondary",
   },
   {
     titleCard: "Plan Premium",
     descriptionCard: `Pensado para negocios en crecimiento que requieren funcionalidades avanzadas y mayor capacidad. Incluye herramientas premium, diseño optimizado, soporte prioritario 24/7, almacenamiento ampliado y actualizaciones continuas.`,
     cta_text: "Ver Planes",
+    variant: "primary",
   },
   {
     titleCard: "Plan Personalizado",
     descriptionCard: `Servicios totalmente adaptable, con funcionalidades personalizadas, almacenamiento ilimitado, soporte dedicado y consultoría especializada para asegurar que el plan cumpla con tus objetivos estratégicos.`,
     cta_text: "Ver Planes",
+    variant: "secondary",
   },
 ];
 ---
 
-<section class="w-full mx-auto flex justify-center p-10">
-  <main class="text-center w-full">
+<section class="w-full mx-auto flex justify-center p-10 h-[80vh]">
+  <main class="text-center flex flex-col w-full h-full">
     <!-- Services & Plans Heading -->
     <h1 class="text-4xl mx-auto font-titles font-black">Planes a tu medida</h1>
     <p class="font-euphemia w-8/12 mx-auto">
@@ -36,13 +40,14 @@ const cards: Array<ServicePlansCards> = [
       imagen sólida y confiable mientras disfrutas de un espacio de trabajo
       adaptado a tus necesidades.
     </p>
-    <div class="border border-black flex justify-center">
+    <div class="border-black flex justify-center gap-8 p-12 h-full">
       {
         cards.map(card => (
           <ServicePlansCards
             titleCard={card.titleCard}
             descriptionCard={card.descriptionCard}
             cta_text={card.cta_text}
+            variant={card.variant}
           />
         ))
       }
