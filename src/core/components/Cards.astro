@@ -1,17 +1,23 @@
 ---
-const  { titleCard, descriptionCard, cta_text } = Astro.props;
+const { titleCard, descriptionCard, cta_text } = Astro.props;
 ---
+
 <div class="cards-container flex justify-center flex-wrap gap-6 p-20">
-    <div class="max-w-sm flex flex-col text-white mx-auto bg-primary border border-gray-200 rounded-3xl shadow-lg overflow-hidden">
-        <div class="p-6 flex-grow">
-            <h2 class="text-2xl font-bold mb-2">{titleCard}</h2>
-            <p class="mb-4 text-left">{descriptionCard}</p>
-        </div>
-        <div class="p-6 pt-0">
-            <a href="#" class="block 
-transition-colors duration-300 bg-white hover:bg-primary-light text-primary hover:text-white text-center font-bold py-2 px-4 rounded">
-                {cta_text}
-            </a>
-        </div>
+  <div
+    class="max-w-sm flex flex-col text-white mx-auto bg-primary border border-gray-200 rounded-3xl shadow-lg overflow-hidden"
+  >
+    <div class="p-6 flex-grow">
+      <h2 class="text-2xl font-bold mb-2">{titleCard}</h2>
+      <p class="mb-4 text-left">{descriptionCard}</p>
     </div>
+    <div class="p-6 pt-0">
+      <a
+        href="#"
+        class="block
+transition-colors duration-300 bg-white hover:bg-primary-light text-primary hover:text-white text-center font-bold py-2 px-4 rounded"
+      >
+        {cta_text}
+      </a>
+    </div>
+  </div>
 </div>
