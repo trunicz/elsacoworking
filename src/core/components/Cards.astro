@@ -1,17 +1,45 @@
 ---
-const  { titleCard, descriptionCard, cta_text } = Astro.props;
+import { clsx } from "clsx";
+interface Props {
+  variant?: "primary" | "secondary";
+  className?: string;
+  disable?: boolean;
+  titleCard?: string;
+  descriptionCard?: Node | string;
+  cta_text?: string;
+}
+
+const {
+  titleCard,
+  descriptionCard,
+  cta_text,
+  variant = "primary",
+} = Astro.props;
+
+const variantClasses = {
+  primary: "bg-primary text-white",
+  secondary: "bg-white border-gray-300 text-black",
+};
+
+const baseClasses = `w-1/5 flex flex-col border rounded-xl`;
+
+const classes = clsx(baseClasses, variantClasses[variant]);
 ---
-<div class="cards-container flex justify-center flex-wrap gap-6 p-20">
-    <div class="max-w-sm flex flex-col text-white mx-auto bg-primary border border-gray-200 rounded-3xl shadow-lg overflow-hidden">
-        <div class="p-6 flex-grow">
-            <h2 class="text-2xl font-bold mb-2">{titleCard}</h2>
-            <p class="mb-4 text-left">{descriptionCard}</p>
-        </div>
-        <div class="p-6 pt-0">
-            <a href="#" class="block 
-transition-colors duration-300 bg-white hover:bg-primary-light text-primary hover:text-white text-center font-bold py-2 px-4 rounded">
-                {cta_text}
-            </a>
-        </div>
+
+<div class={classes}>
+  <div class="flex flex-col h-full">
+    <div class="p-6 flex-grow h-full">
+      <h2 class="text-2xl font-bold mb-2">{titleCard}</h2>
+      <p class="mb-4 text-left">{descriptionCard}</p>
     </div>
+    <div class="p-6 pt-0 h-auto">
+      <a
+        href="#"
+        class="block
+transition-colors duration-300 bg-white border hover:bg-primary-light text-primary hover:text-white text-center font-bold py-2 px-4 rounded"
+      >
+        {cta_text}
+      </a>
+    </div>
+  </div>
 </div>
