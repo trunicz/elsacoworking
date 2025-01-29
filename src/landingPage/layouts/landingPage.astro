@@ -14,15 +14,15 @@ import ContactForm from "../componentes/ContactForm.astro";
     class="bg-[url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDdiZDNyODR0amp6dGhiOTdrenljN2pmengwdGFtZG1kZWxpYjNuNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LRg9gfVZkT7plNE24K/giphy.webp)] bg-fixed bg-cover bg-center w-full h-screen"
   >
     <div class="bg-black/60 h-full flex flex-col">
-      <Header />
+      <Header isDarkMode={true} />
       <Hero />
       <Testimonials />
     </div>
   </div>
   <Services />
   <div class="bg-[#EBEBEB]"><Benefits /></div>
-  <div class="bg-black"><ContactForm/></div>
-  <Faqs/>
-  
+  <div class="bg-black"><ContactForm /></div>
+  <Faqs />
+
   <Footer />
 </main>

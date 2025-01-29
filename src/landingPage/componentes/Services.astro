@@ -3,7 +3,7 @@ import ServicePlansCards from "../../core/components/Cards.astro";
 
 type ServicePlansCards = {
   titleCard: string;
-  descriptionCard: Node | string;
+  descriptionCard: string;
   cta_text: string;
   variant: "primary" | "secondary";
 };
@@ -23,24 +23,26 @@ const cards: Array<ServicePlansCards> = [
   },
   {
     titleCard: "Plan Personalizado",
-    descriptionCard: `Servicios totalmente adaptable, con funcionalidades personalizadas, almacenamiento ilimitado, soporte dedicado y consultoría especializada para asegurar que el plan cumpla con tus objetivos estratégicos.`,
+    descriptionCard: `Servicios totalmente adaptables, con funcionalidades personalizadas, almacenamiento ilimitado, soporte dedicado y consultoría especializada para asegurar que el plan cumpla con tus objetivos estratégicos.`,
     cta_text: "Ver Planes",
     variant: "secondary",
   },
 ];
 ---
 
-<section class="w-full mx-auto flex justify-center p-10 h-[80vh]">
-  <main class="text-center flex flex-col w-full h-full">
+<section class="w-full mx-auto py-16 px-4 sm:px-6 lg:px-8">
+  <main class="text-center max-w-7xl mx-auto">
     <!-- Services & Plans Heading -->
-    <h1 class="text-4xl mx-auto font-titles font-black">Planes a tu medida</h1>
-    <p class="font-euphemia w-8/12 mx-auto">
+    <h1 class="text-4xl font-titles font-black mb-6">Planes a tu medida</h1>
+    <p class="font-euphemia text-lg text-gray-600 max-w-2xl mx-auto mb-12">
       Nuestros planes están diseñados para ofrecerte todo lo necesario para que
       tu negocio crezca con flexibilidad y profesionalismo. Podrás proyectar una
       imagen sólida y confiable mientras disfrutas de un espacio de trabajo
       adaptado a tus necesidades.
     </p>
-    <div class="border-black flex justify-center gap-8 p-12 h-full">
+
+    <!-- Cards Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         cards.map(card => (
           <ServicePlansCards
