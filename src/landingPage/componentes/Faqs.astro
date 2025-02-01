@@ -1,57 +1,48 @@
 ---
-import FAQsComp from '../../core/components/FaqsComponent.astro';
+import FAQsComp from "../../core/components/FaqsComponent.astro";
 
 type FAQsComp = {
-	question: string;
-	answer: string; 
+  question: string;
+  answer: string;
 };
 
 const cards: Array<FAQsComp> = [
-	{
-		question: "¿Cuál es la duración el contrato?",
-		answer: 
-			`Nuestros contratos pueden tener duración de 6 meses a 1 año`
-		,
-	},
-	{
-		question: "¿Qué diferencia hay entre un paquete básico a uno personalizado?",
-		answer: 
-			`La única diferencia es que en el paquete personalizado puedes hacer la instalación del wif ó telefónica y la recepción de llamadas es a nombre de su empresa`
-		,
-	},
-	{
-		question: "¿Cuál es el paquete más económico que manejan?",
-		answer: 
-	`El paquete básico, que incluye el domicilio fiscal, recepción de llamadas y correspondencia, direccion y telefonos establecidos, acceso a la sala de juntas hasta 5 horas a la semana, internet inalambrico y estación de café.`
-		,
-	},
-	{
-		question: "¿Qué capacidad de personas tienen la sala de juntas?",
-		answer: 
-	`Espacio ideal para 8 ó 9 personas`
-		,
-	},
-	{
-		question: "¿Qué requisitos solicitan para iniciar el contrato?",
-		answer: 
-	`Nuestra prioridad es tu seguridad. Contamos con cámaras de vigilancia, acceso controlado por tarjetas o códigos, personal de recepción durante el horario laboral y protocolos de limpieza regulares para mantener un entorno seguro y cómodo.`
-		,
-	},
+  {
+    question: "¿Cuál es la duración el contrato?",
+    answer: `Nuestros contratos pueden tener duración de 6 meses a 1 año`,
+  },
+  {
+    question:
+      "¿Qué diferencia hay entre un paquete básico a uno personalizado?",
+    answer: `La única diferencia es que en el paquete personalizado puedes hacer la instalación del wif ó telefónica y la recepción de llamadas es a nombre de su empresa`,
+  },
+  {
+    question: "¿Cuál es el paquete más económico que manejan?",
+    answer: `El paquete básico, que incluye el domicilio fiscal, recepción de llamadas y correspondencia, dirección y teléfonos establecidos, acceso a la sala de juntas hasta 5 horas a la semana, internet inalámbrico y estación de café.`,
+  },
+  {
+    question: "¿Qué capacidad de personas tienen la sala de juntas?",
+    answer: `Espacio ideal para 8 ó 9 personas`,
+  },
+  {
+    question: "¿Qué requisitos solicitan para iniciar el contrato?",
+    answer: `Nuestra prioridad es tu seguridad. Contamos con cámaras de vigilancia, acceso controlado por tarjetas o códigos, personal de recepción durante el horario laboral y protocolos de limpieza regulares para mantener un entorno seguro y cómodo.`,
+  },
 ];
 ---
+
 <section class="w-full mx-auto flex justify-center p-10">
-	<main class="w-full">
-		<!-- Services & Plans Heading -->
-		<h1 class=" text-center text-4xl mx-auto font-titles font-black	">
-			Preguntas Frecuentes
-		</h1>
-		<div>
-            {cards.map((card) => (
-                <FAQsComp
-                    question={card.question}
-                    answer={card.answer}
-                />
-            ))}
-        </div>
-	</main>
+  <main class="w-full">
+    <!-- Services & Plans Heading -->
+    <h1 class="text-center text-4xl mx-auto font-titles font-black">
+      Preguntas Frecuentes
+    </h1>
+    <div>
+      {
+        cards.map(card => (
+          <FAQsComp question={card.question} answer={card.answer} />
+        ))
+      }
+    </div>
+  </main>
 </section>
