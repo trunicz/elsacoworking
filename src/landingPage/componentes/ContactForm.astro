@@ -2,132 +2,148 @@
 
 ---
 
-<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-lg text-center">
-      <h1 class="text-3xl text-white font-bold sm:text-3xl">¡Hablemos!</h1>
-      <p class="mt-4 text-white">
-        Envía tus datos para ponernos en contacto contigo y asi recibirás información más detallada
+<section
+  class="py-20 bg-neutral-950 flex items-center justify-center px-4 sm:px-6 lg:px-8"
+>
+  <div class="bg-transparent rounded-lg px-8 w-full max-w-lg">
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl font-extrabold text-white">¡Hablemos!</h1>
+      <p class="mt-2 text-white">
+        Envía tus datos para que nos pongamos en contacto y recibas información
+        detallada.
       </p>
     </div>
-  
-    <form action="#" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
-        <!-- Primera fila: Nombre y Apellido -->
-        <div class="grid grid-cols-2 gap-4">
+    <form action="#" class="space-y-6">
+      <!-- Primera fila: Nombre y Apellido -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="nombre" class="block text-sm font-medium text-white"
+            >Nombre</label
+          >
           <input
+            id="nombre"
+            name="nombre"
             type="text"
             placeholder="Nombre"
-            class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm focus:outline-none focus:ring focus:ring-blue-500"
+            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
           />
+        </div>
+        <div>
+          <label for="apellido" class="block text-sm font-medium text-white"
+            >Apellido</label
+          >
           <input
+            id="apellido"
+            name="apellido"
             type="text"
             placeholder="Apellido"
-            class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm focus:outline-none focus:ring focus:ring-blue-500"
+            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
           />
         </div>
-      
-        <!-- Segunda fila: Estado y Ciudad (Dropdowns) -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="relative group">
-            <div
-              class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm cursor-pointer"
-            >
-              Estado
-            </div>
-            <!-- Dropdown content -->
-            <div
-              class="absolute z-10 hidden group-hover:block w-full bg-gray-800 rounded-lg shadow-lg"
-            >
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Opción 1</div>
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Opción 2</div>
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Opción 3</div>
-            </div>
-          </div>
-      
-          <div class="relative group">
-            <div
-              class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm cursor-pointer"
-            >
-              Ciudad
-            </div>
-            <!-- Dropdown content -->
-            <div
-              class="absolute z-10 hidden group-hover:block w-full bg-gray-800 rounded-lg shadow-lg"
-            >
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Opción A</div>
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Opción B</div>
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Opción C</div>
-            </div>
-          </div>
-        </div>
-      
-        <!-- Tercera fila: Paquete y Modalidad (Dropdowns) -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="relative group">
-            <div
-              class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm cursor-pointer"
-            >
-              Paquete
-            </div>
-            <!-- Dropdown content -->
-            <div
-              class="absolute z-10 hidden group-hover:block w-full bg-gray-800 rounded-lg shadow-lg"
-            >
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Básico</div>
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Premium</div>
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Pro</div>
-            </div>
-          </div>
-      
-          <div class="relative group">
-            <div
-              class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm cursor-pointer"
-            >
-              Modalidad
-            </div>
-            <!-- Dropdown content -->
-            <div
-              class="absolute z-10 hidden group-hover:block w-full bg-gray-800 rounded-lg shadow-lg"
-            >
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Presencial</div>
-              <div class="p-2 hover:bg-gray-700 text-gray-300">Virtual</div>
-            </div>
-          </div>
-        </div>
-      
-        <!-- Método de Contacto (Dropdown) -->
-        <div class="relative group">
-          <div
-            class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm cursor-pointer"
-          >
-            Método de Contacto
-          </div>
-          <!-- Dropdown content -->
-          <div
-            class="absolute z-10 hidden group-hover:block w-full bg-gray-800 rounded-lg shadow-lg"
-          >
-            <div class="p-2 hover:bg-gray-700 text-gray-300">Correo Electrónico</div>
-            <div class="p-2 hover:bg-gray-700 text-gray-300">Teléfono</div>
-            <div class="p-2 hover:bg-gray-700 text-gray-300">WhatsApp</div>
-          </div>
-        </div>
-      
-        <!-- Información de Contacto -->
+      </div>
+
+      <!-- Segunda fila: Estado y Ciudad -->
+      <div class="grid grid-cols-2 gap-4">
         <div>
-          <input
-            type="text"
-            placeholder="Información de Contacto"
-            class="w-full rounded-lg bg-gray-800 p-4 text-gray-300 placeholder-gray-400 shadow-sm focus:outline-none focus:ring focus:ring-blue-500"
-          />
-        </div>
-      
-        <!-- Botón de aceptar -->
-        <div>
-          <button
-            type="submit"
-            class="w-full rounded-lg bg-blue-600 p-4 text-white font-semibold shadow-sm hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-500"
+          <label for="estado" class="block text-sm font-medium text-white"
+            >Estado</label
           >
-            Aceptar
-          </button>
+          <select
+            id="estado"
+            name="estado"
+            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+          >
+            <option>Opción 1</option>
+            <option>Opción 2</option>
+            <option>Opción 3</option>
+          </select>
         </div>
+        <div>
+          <label for="ciudad" class="block text-sm font-medium text-white"
+            >Ciudad</label
+          >
+          <select
+            id="ciudad"
+            name="ciudad"
+            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+          >
+            <option>Opción A</option>
+            <option>Opción B</option>
+            <option>Opción C</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tercera fila: Paquete y Modalidad -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="paquete" class="block text-sm font-medium text-white"
+            >Paquete</label
+          >
+          <select
+            id="paquete"
+            name="paquete"
+            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+          >
+            <option>Básico</option>
+            <option>Premium</option>
+            <option>Pro</option>
+          </select>
+        </div>
+        <div>
+          <label for="modalidad" class="block text-sm font-medium text-white"
+            >Modalidad</label
+          >
+          <select
+            id="modalidad"
+            name="modalidad"
+            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+          >
+            <option>Presencial</option>
+            <option>Virtual</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Método de Contacto -->
+      <div>
+        <label for="metodoContacto" class="block text-sm font-medium text-white"
+          >Método de Contacto</label
+        >
+        <select
+          id="metodoContacto"
+          name="metodoContacto"
+          class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+        >
+          <option>Correo Electrónico</option>
+          <option>Teléfono</option>
+          <option>WhatsApp</option>
+        </select>
+      </div>
+
+      <!-- Información de Contacto -->
+      <div>
+        <label for="infoContacto" class="block text-sm font-medium text-white"
+          >Información de Contacto</label
+        >
+        <input
+          id="infoContacto"
+          name="infoContacto"
+          type="text"
+          placeholder="Información de Contacto"
+          class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+        />
+      </div>
+
+      <!-- Botón de Aceptar -->
+      <div>
+        <button
+          type="submit"
+          class="w-full py-3 px-4 bg-gray-600 text-gray-300 font-semibold rounded-md shadow hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        >
+          Aceptar
+        </button>
+      </div>
     </form>
-</div>
+  </div>
+</section>
