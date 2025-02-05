@@ -4,8 +4,8 @@ import Footer from "../../core/components/Footer.astro";
 import Hero from "../componentes/Hero.astro";
 import Testimonials from "../componentes/Testimonials.astro";
 import Services from "../componentes/Services.astro";
-import Benefits from "../componentes/Benefits.astro";
-import Faqs from "../componentes/Faqs.astro";
+import Benefits from "../componentes/Benefits";
+import Faqs from "../componentes/Faqs";
 import ContactForm from "../componentes/ContactForm.astro";
 ---
 
@@ -20,9 +20,9 @@ import ContactForm from "../componentes/ContactForm.astro";
     </div>
   </div>
   <Services />
-  <div class="bg-[#EBEBEB]"><Benefits /></div>
+  <div class="bg-[#EBEBEB]"><Benefits client:load /></div>
   <div class="bg-black"><ContactForm /></div>
-  <Faqs />
+  <Faqs client:load />
 
   <Footer />
 </main>
