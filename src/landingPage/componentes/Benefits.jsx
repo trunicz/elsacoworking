@@ -27,10 +27,7 @@ const Benefits = () => {
   return (
     <div className="w-full mx-auto flex justify-center p-10">
       <div className="text-center w-full">
-        <section
-          ref={targetRef}
-          className={`relative h-[${images.length}00vh]  mt-6`}
-        >
+        <section ref={targetRef} className={`relative h-[200vh]  mt-6`}>
           <div className="sticky top-0 h-screen w-8/12 mx-auto flex items-center flex-wrap">
             <div className="flex-1 flex flex-col ">
               <h1 className="text-4xl font-titles font-black">Beneficios</h1>
