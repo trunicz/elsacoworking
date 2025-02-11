@@ -1,5 +1,5 @@
 ---
-
+import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
 ---
 
 <section
@@ -25,7 +25,7 @@
             name="nombre"
             type="text"
             placeholder="Nombre"
-            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+            class="p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600 autofill:pt-6 autofill:pb-2"
           />
         </div>
         <div>
@@ -37,42 +37,14 @@
             name="apellido"
             type="text"
             placeholder="Apellido"
-            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+            class="p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600 autofill:pt-6 autofill:pb-2"
           />
         </div>
       </div>
 
       <!-- Segunda fila: Estado y Ciudad -->
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label for="estado" class="block text-sm font-medium text-white"
-            >Estado</label
-          >
-          <select
-            id="estado"
-            name="estado"
-            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-          >
-            <option>Opción 1</option>
-            <option>Opción 2</option>
-            <option>Opción 3</option>
-          </select>
-        </div>
-        <div>
-          <label for="ciudad" class="block text-sm font-medium text-white"
-            >Ciudad</label
-          >
-          <select
-            id="ciudad"
-            name="ciudad"
-            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-          >
-            <option>Opción A</option>
-            <option>Opción B</option>
-            <option>Opción C</option>
-          </select>
-        </div>
-      </div>
+
+      <CitiesSelect client:load />
 
       <!-- Tercera fila: Paquete y Modalidad -->
       <div class="grid grid-cols-2 gap-4">
@@ -83,7 +55,7 @@
           <select
             id="paquete"
             name="paquete"
-            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+            class="p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600 autofill:pt-6 autofill:pb-2"
           >
             <option>Básico</option>
             <option>Premium</option>
@@ -97,7 +69,7 @@
           <select
             id="modalidad"
             name="modalidad"
-            class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+            class="p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600 autofill:pt-6 autofill:pb-2"
           >
             <option>Presencial</option>
             <option>Virtual</option>
@@ -113,7 +85,7 @@
         <select
           id="metodoContacto"
           name="metodoContacto"
-          class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+          class="p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600 autofill:pt-6 autofill:pb-2"
         >
           <option>Correo Electrónico</option>
           <option>Teléfono</option>
@@ -131,7 +103,7 @@
           name="infoContacto"
           type="text"
           placeholder="Información de Contacto"
-          class="mt-1 block w-full rounded-md border border-black bg-black text-gray-300 p-2 shadow-sm focus:border-gray-500 focus:ring-gray-500"
+          class="p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600 autofill:pt-6 autofill:pb-2"
         />
       </div>
 
@@ -139,7 +111,7 @@
       <div>
         <button
           type="submit"
-          class="w-full py-3 px-4 bg-gray-600 text-gray-300 font-semibold rounded-md shadow hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          class="w-full py-3 px-4 bg-primary text-gray-300 font-semibold rounded-md shadow hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
         >
           Aceptar
         </button>
