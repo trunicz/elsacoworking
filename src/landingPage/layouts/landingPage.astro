@@ -3,7 +3,7 @@ import Header from "../../core/components/Header.astro";
 import Footer from "../../core/components/Footer.astro";
 import Hero from "../componentes/Hero.astro";
 import Testimonials from "../componentes/Testimonials.astro";
-import Services from "../componentes/Services.astro";
+import Services from "../componentes/Services";
 import Benefits from "../componentes/Benefits";
 import Faqs from "../componentes/Faqs";
 import ContactForm from "../componentes/ContactForm.astro";
@@ -19,7 +19,7 @@ import ContactForm from "../componentes/ContactForm.astro";
       <Testimonials />
     </div>
   </div>
-  <Services />
+  <Services client:load />
   <div class="bg-[#EBEBEB]"><Benefits client:load /></div>
   <div class="bg-black"><ContactForm /></div>
   <Faqs client:load />
