@@ -6,6 +6,7 @@ interface Props {
    */
   isDarkMode?: boolean;
 }
+const { user } = Astro.locals;
 
 const { isDarkMode = false } = Astro.props;
 ---
@@ -59,6 +60,13 @@ const { isDarkMode = false } = Astro.props;
         <li class="border-b-2 border-transparent hover:border-primary">
           <a href="/blog">Blog</a>
         </li>
+        {
+          user ? (
+            <li class="border-b-2 border-transparent hover:border-primary">
+              <a href="/admin">Admin</a>
+            </li>
+          ) : null
+        }
       </ul>
     </nav>
   </div>

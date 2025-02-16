@@ -3,27 +3,12 @@ import { FormPost } from "@/src/Blog/FormPost";
 import Footer from "@/src/core/components/Footer.astro";
 import Header from "@/src/core/components/Header.astro";
 import Layout from "@/src/core/Layout.astro";
-// import { ID } from "appwrite";
-// import { databases } from "@/src/lib/appwrite";
 
-// if (Astro.request.method === "POST") {
-//   const formData = await Astro.request.formData();
-//   const data = {
-//     title: formData.get("title"),
-//     slug: formData.get("slug"),
-//     content: formData.get("content"),
-//     description: formData.get("description"),
-//   };
+const { user } = Astro.locals;
 
-//   const result = await databases.createDocument(
-//     import.meta.env.app_write_db_blog,
-//     import.meta.env.app_write_collection_posts,
-//     ID.unique(),
-//     data
-//   );
-
-//   return Astro.redirect(`/blog/${result.slug}`);
-// }
+if (!user) {
+  return Astro.redirect("/");
+}
 ---
 
 <Layout title="Sobre Nosotros">

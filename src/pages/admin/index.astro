@@ -1,10 +1,10 @@
 ---
 import Header from "@/src/core/components/Header.astro";
 import Layout from "@/src/core/Layout.astro";
+import Button from "./_components/Button.astro";
+import Caption from "./_components/Caption.astro";
 
 const { user } = Astro.locals;
-
-console.log(user);
 
 if (!user) {
   return Astro.redirect("/admin/login");
@@ -13,4 +13,28 @@ if (!user) {
 
 <Layout>
   <Header />
+  <main
+    class="flex flex-col min-h-[85vh] md:w-6/12 mx-auto items-center justify-center pt-12"
+  >
+    <h1 class="text-4xl font-bold mb-4">Admin Dashboard</h1>
+    <p class="text-lg mb-6">
+      Welcome to the admin dashboard. Here you can manage all aspects of the
+      site.
+    </p>
+    <ul class="grid grid-cols-3 gap-3 w-full">
+      <li class="">
+        <Button icon="lucide:pencil-line" to="/blog/new">Escribir Blog</Button>
+      </li>
+      <li class="">
+        <Button icon="lucide:mouse-pointer-click">Ver Solicitudes</Button>
+      </li>
+      <li class="">
+        <Button icon="lucide:users-round">Gestionar Clientes</Button>
+      </li>
+      <li class="">
+        <Button icon="lucide:log-out" to="/admin/logout">Cerrar sesión</Button>
+      </li>
+    </ul>
+    <Caption />
+  </main>
 </Layout>
