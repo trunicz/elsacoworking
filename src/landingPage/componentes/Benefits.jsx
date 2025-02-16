@@ -1,6 +1,7 @@
 import CardImage from "./Benefits/CardImage";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { Button } from "@/src/core/components/button";
 
 const images = [
   {
@@ -49,11 +50,7 @@ const Benefits = () => {
               ))}
             </motion.div>
             <div className="flex-1 mx-auto">
-              <a
-                class={`inline-block px-6 py-3 rounded-full font-semibold primary bg-slate-600 text-white hover:bg-slate-700 cursor-pointer active:scale-95 transition-all select-none`}
-              >
-                Ver mas
-              </a>
+              <Button>Ver mas</Button>
             </div>
           </div>
         </section>
