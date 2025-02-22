@@ -1,31 +1,17 @@
 ---
-import TestimonialCards from "./testimonials/TestimonialCards.astro";
+import { Marqueee } from "./Marqueee";
 
-type TestimonialsCard = {
-  message: string;
-  name: string;
-  from: string;
-};
+const response = await fetch(
+  "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJna9az53Ur4YR-GRdHgu0iWQ&fields=name,rating,reviews&key=AIzaSyCYRsKgL8gb6oAHg9N1t-pCj8k1-xBx2fE&language=es"
+);
 
-const test = {
-  message: '"Great service and amazing quality! Highly recommend."',
-  name: "Markus Koal",
-  from: "Facebook",
-};
-
-const testimonials: Array<TestimonialsCard> = [test, test, test, test];
+const testimonials = await response
+  .json()
+  .then(response => response.result.reviews);
 ---
 
 <div class="text-white bg-black min-h-[25vh] w-full">
   <div class="container flex mx-auto items-center h-full">
-    {
-      testimonials.map((testimonial: TestimonialsCard) => (
-        <TestimonialCards
-          name={testimonial.name}
-          message={testimonial.message}
-          from={testimonial.from}
-        />
-      ))
-    }
+    <Marqueee testimonials={testimonials} client:only />
   </div>
 </div>
