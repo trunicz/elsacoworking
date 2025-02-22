@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/src/core/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+import Header from "@/src/core/components/Header.astro";
+import Footer from "@/src/core/components/Footer.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const pages = await getCollection("landingContent");
+  return pages.map(page => ({
+    params: { id: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: CollectionEntry<"landingContent"> };
+const { Content } = await page.render();
+---
+
+<Layout title={page.data.title}>
+  <Header />
+  <div
+    class="prose md:prose-xl flex flex-col w-full justify-center mx-auto py-24 px-4"
+  >
+    <h1 class="text-center md:text-5xl text-3xl font-bold">
+      {page.data.title}
+    </h1>
+    <Content />
+  </div>
+  <Footer />
+</Layout>
