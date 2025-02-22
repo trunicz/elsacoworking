@@ -6,7 +6,7 @@ export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
     const { account } = createSessionClient(request);
     locals.user = await account.get();
   } catch (error) {
-    console.error("Error en el middleware:", error);
+    console.error("Auth Exception");
   }
   return next();
 });
