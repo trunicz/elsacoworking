@@ -2,7 +2,7 @@ import { useState, type SyntheticEvent } from "react";
 import { ID } from "appwrite";
 import { Button } from "../core/components/button";
 import { databases } from "../lib/appwrite";
-import { Editor } from "@/src/Blog/Editor";
+import { Editor } from "@/src/blog/Editor";
 import { marked } from "marked";
 
 export const FormPost = () => {
