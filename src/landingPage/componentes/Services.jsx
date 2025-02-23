@@ -43,10 +43,7 @@ const Services = () => {
           espacio de trabajo adaptado a tus necesidades.
         </p>
 
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-auto md:grid-rows-3 gap-4 md:gap-6 lg:gap-x-6"
-        >
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-auto md:grid-rows-3 gap-4 md:gap-6 lg:gap-x-6">
           <LayoutGroup>
             {cards.map((card, index) => (
               <ServicePlansCards
@@ -83,7 +80,7 @@ const ServicePlansCards = ({
         className={`bg-neutral-100 relative rounded-xl p-4 md:p-6 flex flex-col overflow-hidden ${
           isActive
             ? "md:col-start-2 md:col-span-2 md:row-start-1 md:row-span-full relative"
-            : "cursor-pointer text-white"
+            : "cursor-pointer text-white "
         }`}
       >
         <motion.img
@@ -100,12 +97,12 @@ const ServicePlansCards = ({
             isActive ? "pt-20 lg:pt-32" : "pt-4  w-full flex flex-col  p-6"
           }  z-10`}
         >
-          <h2
-            layout
-            className="text-xl md:text-xl flex-1 font-titles font-black"
+          <motion.h2
+            layout="preserve-aspect"
+            className="text-xl md:text-xl font-titles font-black"
           >
             {titleCard}
-          </h2>
+          </motion.h2>
 
           <motion.p
             layout
