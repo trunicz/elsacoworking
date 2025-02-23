@@ -7,6 +7,7 @@ const landingContent = defineCollection({
     description: z.string(),
     author: z.string(),
     date: z.string(),
+    image: z.string().optional(),
   }),
 });
 
