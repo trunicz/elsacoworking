@@ -25,17 +25,22 @@ const Services = () => {
   const [selectedItem, setSelectedItem] = useState(0);
 
   return (
-    <section class="w-full mx-auto py-28 px-4 sm:px-6 lg:px-8 h-screen">
-      <main class="text-center max-w-7xl mx-auto">
-        <h1 class="text-4xl font-titles font-black mb-6">Planes a tu medida</h1>
-        <p class="font-euphemia text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+    <section className="w-full mx-auto py-12 md:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 ">
+      <main className="text-center max-w-7xl mx-auto">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-titles font-black mb-4 md:mb-6">
+          Planes a tu medida
+        </h1>
+        <p className="font-euphemia text-base md:text-lg text-gray-600 max-w-xl md:max-w-2xl mx-auto mb-8 md:mb-12">
           Nuestros planes están diseñados para ofrecerte todo lo necesario para
           que tu negocio crezca con flexibilidad y profesionalismo. Podrás
           proyectar una imagen sólida y confiable mientras disfrutas de un
           espacio de trabajo adaptado a tus necesidades.
         </p>
 
-        <motion.div layout class="grid grid-cols-3 grid-rows-6  gap-4 gap-x-32">
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-auto md:grid-rows-3 gap-4 md:gap-6 lg:gap-x-32"
+        >
           <LayoutGroup>
             {cards.map((card, index) => (
               <ServicePlansCards
@@ -68,27 +73,34 @@ const ServicePlansCards = ({
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, stiffness: 75, visualDuration: 0.1 }}
         onClick={onClick}
-        className={`bg-neutral-100 relative rounded-xl col-span-1 row-span-1 p-4 flex flex-col overflow-hidden ${
+        className={`bg-neutral-100 relative rounded-xl p-4 md:p-6 flex flex-col overflow-hidden ${
           isActive
-            ? "col-start-2 col-span-2 row-start-1 row-span-full"
+            ? "md:col-start-2 md:col-span-2 md:row-start-1 md:row-span-full relative"
             : "cursor-pointer text-white"
         }`}
       >
         <motion.img
           layout
           className={`${
-            isActive ? "block h-20" : "absolute top-0 left-0 h-full"
-          } w-full rounded-md object-cover`}
+            isActive
+              ? "block h-20 md:h-32 absolute left-0 top-0"
+              : "absolute top-0 left-0 h-full"
+          } w-full object-cover rounded-t-xl`}
           src="https://picsum.photos/1080/720?grayscale"
         />
-        <div className="pt-4 z-10">
-          <motion.h2 layout className="text-2xl font-titles font-black">
+        <div className={`${isActive ? "pt-20 lg:pt-32" : "pt-4"} md:pt-6 z-10`}>
+          <motion.h2
+            layout
+            className="text-xl md:text-2xl font-titles font-black"
+          >
             {titleCard}
           </motion.h2>
 
           <motion.p
             layout
-            className={`text-start pt-5 ${isActive ? "block" : "hidden"}`}
+            className={`text-start pt-3 md:pt-5 text-sm md:text-base ${
+              isActive ? "block" : "hidden"
+            }`}
           >
             {descriptionCard}
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
