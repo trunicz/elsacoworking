@@ -28,7 +28,7 @@ const Benefits = () => {
   return (
     <div className="w-full mx-auto flex justify-center p-10">
       <div className="text-center w-full">
-        <section ref={targetRef} className="relative h-[400vh]  mt-6">
+        <section ref={targetRef} className="relative min-h-[400vh]  mt-6">
           <div className="sticky top-0 h-screen w-8/12 mx-auto flex items-center overflow-hidden flex-wrap">
             <div className="flex-1 flex flex-col ">
               <h1 className="text-4xl font-titles font-black">Beneficios</h1>
@@ -43,7 +43,7 @@ const Benefits = () => {
             <motion.div
               layout
               style={{ x }}
-              className="flex items-center gap-6"
+              className="flex  items-center gap-6"
             >
               {images.map((image, index) => (
                 <CardImage src={image.src} alt={image.alt} key={index} />
