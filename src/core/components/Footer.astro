@@ -1,86 +1,100 @@
-<footer class="bg-black text-white w-full mx-auto py-8">
-  <div
-    class="container mx-auto grid grid-cols-4 grid-rows-2 md:grid-cols-4 md:gap-x-24 gap-y-6 px-4"
-  >
-    <!-- Sección: Mapa -->
-    <section class="col-span-full xl:col-span-2 row-span-2 mb-8">
-      <h3 class="text-lg font-semibold mb-4">Visítanos</h3>
-      <div
-        class="aspect-w-16 aspect-h-9 h-full bg-gray-800 rounded-md overflow-hidden"
-      >
-        <iframe
-          class="w-full h-full"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d589.2597955252121!2d-110.33430049430083!3d24.12769019908272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86afd49dcf5aaf9d%3A0x6489b40b1e5d64f8!2sElsa%20Coworking!5e0!3m2!2ses!4v1734813150778"
-          allowfullscreen=""
-          aria-hidden="false"
-          tabindex="0"></iframe>
-      </div>
-    </section>
+<footer class="bg-black text-white py-8 cursor-default">
+  <div class="container mx-auto px-4">
+    <!-- Bloque principal -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-2 gap-8">
+      <!-- Mapa -->
+      <section class="lg:col-span-2 lg:row-span-2">
+        <h3 class="text-xl font-semibold mb-4">Visítanos</h3>
+        <div class="w-full bg-gray-800 rounded-md overflow-hidden aspect-video">
+          <iframe
+            class="w-full h-full"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d589.2597955252121!2d-110.33430049430083!3d24.12769019908272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86afd49dcf5aaf9d%3A0x6489b40b1e5d64f8!2sElsa%20Coworking!5e0!3m2!2ses!4v1734813150778"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0"></iframe>
+        </div>
+      </section>
 
-    <!-- Sección: Contacto -->
-    <section class="">
-      <h3 class="text-lg font-semibold mb-4">Contacto</h3>
-      <address>
-        C. Valentín Gómez Farías 17<br />
-        Puesta del Sol, 23090<br />
-        La Paz, B.C.S.
-      </address>
-      <p class="text-sm">
-        <a
-          href="mailto:support@elsa-coworking.io"
-          class="text-blue-400 hover:underline"
-        >
-          support@elsa-coworking.io
-        </a>
-      </p>
-      <p class="text-sm mt-2">
-        <a href="tel:6121218793" class="text-blue-400 hover:underline">
-          +52 (612) 121-8793
-        </a>
-      </p>
-    </section>
+      <!-- Contacto -->
+      <section>
+        <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+        <address class="not-italic opacity-75">
+          C. Valentín Gómez Farías 17<br />
+          Puesta del Sol, 23090<br />
+          La Paz, B.C.S.
+        </address>
+        <p class="mt-2 text-sm">
+          <a
+            href="mailto:support@elsa-coworking.io"
+            class="text-blue-400 hover:underline"
+          >
+            support@elsa-coworking.io
+          </a>
+        </p>
+        <p class="mt-2 text-sm">
+          <a href="tel:6121218793" class="text-blue-400 hover:underline">
+            +52 (612) 121-8793
+          </a>
+        </p>
+      </section>
 
-    <!-- Sección: Horarios -->
-    <section class="lg:col-start-4">
-      <h3 class="text-lg font-semibold mb-4">Horarios</h3>
-      <ul>
-        <li class="flex justify-between">
-          Lun-Vi:
-          <div class="flex flex-wrap w-8/12 flex-col">
-            <span>9:00am - 2:00pm</span>
-            <span>4:00pm - 8:00pm</span>
-          </div>
-        </li>
-        <li class="flex justify-between mt-1">
-          Sab-Dom:
-          <div class="flex flex-wrap w-8/12">
-            <span>Cerrado</span>
-          </div>
-        </li>
-      </ul>
-    </section>
+      <!-- Horarios -->
+      <section>
+        <h3 class="text-xl font-semibold mb-4">Horarios</h3>
+        <ul class="text-sm">
+          <li class="mb-2">
+            <span class="block font-medium">Lun-Vie:</span>
+            <span class="opacity-75">9:00am - 2:00pm</span><br />
+            <span class="opacity-75">4:00pm - 8:00pm</span>
+          </li>
+          <li>
+            <span class="block font-medium">Sab-Dom:</span>
+            <span class="opacity-75">Cerrado</span>
+          </li>
+        </ul>
+      </section>
 
-    <!-- Sección: Links -->
-    <section class="">
-      <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a href="#" class="hover:underline">Sobre Nosotros</a></li>
-        <li><a href="#" class="hover:underline">Servicios</a></li>
-        <li><a href="#" class="hover:underline">Blog</a></li>
-      </ul>
-    </section>
+      <!-- Quick Links -->
+      <section>
+        <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/es/sobre-nosotros" class="hover:underline opacity-75"
+              >Sobre Nosotros</a
+            >
+          </li>
+          <li>
+            <a href="/es/servicios" class="hover:underline opacity-75"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a href="/blog" class="hover:underline opacity-75">Blog</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3 class="text-xl font-semibold mb-4">Legal</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="hover:underline opacity-75"
+              >Política de Privacidad</a
+            >
+          </li>
+          <li>
+            <a href="#" class="hover:underline opacity-75">
+              Términos y Condiciones
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
 
-    <!-- Sección: Legal -->
-    <section class="">
-      <h3 class="text-lg font-semibold mb-4">Legal</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-        <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
-      </ul>
-    </section>
+    <!-- Bloque Legal -->
   </div>
 
-  <div class="border-t border-gray-700 mt-20 pt-4 text-center text-sm">
+  <!-- Footer final -->
+  <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
     <p>© 2024 Copyright, All Rights Reserved, Made with ❤️ by ChoyaTech</p>
   </div>
 </footer>

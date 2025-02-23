@@ -87,8 +87,8 @@ const ServicePlansCards = ({
           layout
           className={`${
             isActive
-              ? "block h-20 md:h-32 absolute left-0 top-0"
-              : "absolute top-0 left-0 h-full"
+              ? "block h-20 md:h-32 absolute left-0 top-0 "
+              : "absolute top-0 left-0 h-full brightness-50"
           } w-full object-cover rounded-t-xl`}
           src={imageURL}
         />
@@ -106,7 +106,9 @@ const ServicePlansCards = ({
 
           <motion.p
             layout
-            className={`text-start pt-3 md:pt-5 text-sm md:text-base ${
+            animate={{ opacity: isActive ? 1 : 0, opacity: isActive ? 1 : 0 }}
+            transition={{ duration: 0.9 }}
+            className={`text-start  overflow-hidden pt-3 md:pt-5 text-sm md:text-base ${
               isActive ? "block" : "hidden"
             }`}
           >
