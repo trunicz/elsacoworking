@@ -1,9 +1,9 @@
 <footer class="bg-black text-white py-8 cursor-default">
   <div class="container mx-auto px-4">
     <!-- Bloque principal -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-2 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
       <!-- Mapa -->
-      <section class="lg:col-span-2 lg:row-span-2">
+      <section class="lg:col-span-1">
         <h3 class="text-xl font-semibold mb-4">Visítanos</h3>
         <div class="w-full bg-gray-800 rounded-md overflow-hidden aspect-video">
           <iframe
@@ -15,81 +15,85 @@
         </div>
       </section>
 
-      <!-- Contacto -->
-      <section>
-        <h3 class="text-xl font-semibold mb-4">Contacto</h3>
-        <address class="not-italic opacity-75">
-          C. Valentín Gómez Farías 17<br />
-          Puesta del Sol, 23090<br />
-          La Paz, B.C.S.
-        </address>
-        <p class="mt-2 text-sm">
-          <a
-            href="mailto:support@elsa-coworking.io"
-            class="text-blue-400 hover:underline"
-          >
-            support@elsa-coworking.io
-          </a>
-        </p>
-        <p class="mt-2 text-sm">
-          <a href="tel:6121218793" class="text-blue-400 hover:underline">
-            +52 (612) 121-8793
-          </a>
-        </p>
-      </section>
-
-      <!-- Horarios -->
-      <section>
-        <h3 class="text-xl font-semibold mb-4">Horarios</h3>
-        <ul class="text-sm">
-          <li class="mb-2">
-            <span class="block font-medium">Lun-Vie:</span>
-            <span class="opacity-75">9:00am - 2:00pm</span><br />
-            <span class="opacity-75">4:00pm - 8:00pm</span>
-          </li>
-          <li>
-            <span class="block font-medium">Sab-Dom:</span>
-            <span class="opacity-75">Cerrado</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Quick Links -->
-      <section>
-        <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <a href="/es/sobre-nosotros" class="hover:underline opacity-75"
-              >Sobre Nosotros</a
+      <!-- Contenido en dos columnas en lg, una en mobile -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <!-- Contacto -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+          <address class="not-italic opacity-75">
+            C. Valentín Gómez Farías 17<br />
+            Puesta del Sol, 23090<br />
+            La Paz, B.C.S.
+          </address>
+          <p class="mt-2 text-sm">
+            <a
+              href="mailto:support@elsa-coworking.io"
+              class="text-blue-400 hover:underline"
             >
-          </li>
-          <li>
-            <a href="/es/servicios" class="hover:underline opacity-75"
-              >Servicios</a
-            >
-          </li>
-          <li>
-            <a href="/blog" class="hover:underline opacity-75">Blog</a>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h3 class="text-xl font-semibold mb-4">Legal</h3>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <a href="#" class="hover:underline opacity-75"
-              >Política de Privacidad</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:underline opacity-75">
-              Términos y Condiciones
+              support@elsa-coworking.io
             </a>
-          </li>
-        </ul>
+          </p>
+          <p class="mt-2 text-sm">
+            <a href="tel:6121218793" class="text-blue-400 hover:underline">
+              +52 (612) 121-8793
+            </a>
+          </p>
+        </div>
+
+        <!-- Horarios -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Horarios</h3>
+          <ul class="text-sm">
+            <li class="mb-2">
+              <span class="block font-medium">Lun-Vie:</span>
+              <span class="opacity-75">9:00am - 2:00pm</span><br />
+              <span class="opacity-75">4:00pm - 8:00pm</span>
+            </li>
+            <li>
+              <span class="block font-medium">Sab-Dom:</span>
+              <span class="opacity-75">Cerrado</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="/es/sobre-nosotros" class="hover:underline opacity-75"
+                >Sobre Nosotros</a
+              >
+            </li>
+            <li>
+              <a href="/es/servicios" class="hover:underline opacity-75"
+                >Servicios</a
+              >
+            </li>
+            <li>
+              <a href="/blog" class="hover:underline opacity-75">Blog</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Legal</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="#" class="hover:underline opacity-75"
+                >Política de Privacidad</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:underline opacity-75">
+                Términos y Condiciones
+              </a>
+            </li>
+          </ul>
+        </div>
       </section>
     </div>
-
     <!-- Bloque Legal -->
   </div>
 
