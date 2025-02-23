@@ -29,12 +29,12 @@ const Faqs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <section className="w-full mx-auto flex justify-center p-10">
-      <main className="w-full">
-        <h1 className="text-center text-4xl mx-auto font-titles font-black">
+    <section className="w-full px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
+      <main className="max-w-7xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-titles font-black mb-6 sm:mb-8">
           Preguntas Frecuentes
         </h1>
-        <div className="w-3/4 mx-auto py-10 flex flex-col gap-3">
+        <div className="w-full sm:w-11/12 md:w-3/4 mx-auto space-y-3 sm:space-y-4">
           {cards.map((card, index) => (
             <FAQsComp
               key={index}
