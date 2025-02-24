@@ -16,17 +16,19 @@ if (!user) {
   <main
     class="flex flex-col min-h-[85vh] md:w-6/12 mx-auto items-center justify-center pt-12"
   >
-    <h1 class="text-4xl font-bold mb-4">Admin Dashboard</h1>
-    <p class="text-lg mb-6">
-      Welcome to the admin dashboard. Here you can manage all aspects of the
-      site.
+    <h1 class="text-3xl">Panel de Control</h1>
+    <p class="text-sm text-gray-600 mb-4 text-center">
+      Bienvenido al panel de administración. Gestiona todos los aspectos del
+      sitio.
     </p>
     <ul class="grid grid-cols-3 gap-3 w-full">
       <li class="">
         <Button icon="lucide:pencil-line" to="/blog/new">Escribir Blog</Button>
       </li>
       <li class="">
-        <Button icon="lucide:mouse-pointer-click">Ver Solicitudes</Button>
+        <Button icon="lucide:mouse-pointer-click" to="/admin/requests"
+          >Ver Solicitudes</Button
+        >
       </li>
       <li class="">
         <Button icon="lucide:users-round">Gestionar Clientes</Button>
