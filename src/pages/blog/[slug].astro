@@ -1,6 +1,5 @@
 ---
 import Footer from "@/src/core/components/Footer.astro";
-import Header from "@/src/core/components/Header.astro";
 import Layout from "@/src/core/Layout.astro";
 import { databases } from "@/src/lib/appwrite";
 import { Query } from "appwrite";
@@ -21,7 +20,6 @@ const post = documents[0];
 ---
 
 <Layout title={post.title}>
-  <Header />
   <container class="min-h-[80vh] block w-1/2 py-20 mx-auto">
     <article class="prose lg:prose-xl mx-auto">
       <h1 class="text-5xl font-bold mb-4">{post.title}</h1>

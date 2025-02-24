@@ -18,7 +18,9 @@ const { isDarkMode = false } = Astro.props;
 <header
   x-data="{ open: false }"
   class={`w-full py-4 px-6 transition-colors duration-300 ${
-    !isDarkMode ? "bg-gray-900 text-white" : "bg-transparent text-white"
+    !isDarkMode
+      ? "bg-gray-900 text-white"
+      : "bg-transparent text-white absolute"
   }`}
 >
   <div class="container mx-auto flex justify-between items-center">

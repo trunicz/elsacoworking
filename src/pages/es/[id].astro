@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Layout from "@/src/core/Layout.astro";
 import type { CollectionEntry } from "astro:content";
-import Header from "@/src/core/components/Header.astro";
 import Footer from "@/src/core/components/Footer.astro";
 
 export const prerender = true;
@@ -20,7 +19,6 @@ const { Content } = await page.render();
 ---
 
 <Layout title={page.data.title}>
-  <Header />
   {
     page.data.image && (
       <img

@@ -1,5 +1,4 @@
 ---
-import Header from "@/src/core/components/Header.astro";
 import Layout from "@/src/core/Layout.astro";
 import ClientCard from "@/src/pages/admin/requests/_components/ClientCard.astro";
 import { databases } from "@/src/lib/appwrite";
@@ -17,7 +16,6 @@ console.log(clients);
 ---
 
 <Layout>
-  <Header />
   <main
     class="flex flex-col gap-4 min-h-[85vh] p-4 md:w-8/12 lg:w-6/12 mx-auto"
   >
