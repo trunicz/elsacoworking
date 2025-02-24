@@ -12,7 +12,7 @@ if (!slug) {
 }
 
 const { documents } = await databases.listDocuments(
-  import.meta.env.PUBLIC_APPWRITE_BLOG,
+  import.meta.env.PUBLIC_APPWRITE_DB,
   import.meta.env.PUBLIC_APPWRITE_POSTS,
   [Query.equal("slug", slug)]
 );

@@ -6,7 +6,7 @@ import Layout from "@/src/core/Layout.astro";
 import { databases } from "@/src/lib/appwrite";
 
 const { documents: posts } = await databases.listDocuments(
-  import.meta.env.PUBLIC_APPWRITE_BLOG,
+  import.meta.env.PUBLIC_APPWRITE_DB,
   import.meta.env.PUBLIC_APPWRITE_POSTS
 );
 

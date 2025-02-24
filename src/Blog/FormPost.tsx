@@ -27,7 +27,7 @@ export const FormPost = () => {
     const _content = await marked.parse(content);
 
     const results = await databases.createDocument(
-      import.meta.env.PUBLIC_APPWRITE_BLOG,
+      import.meta.env.PUBLIC_APPWRITE_DB,
       import.meta.env.PUBLIC_APPWRITE_POSTS,
       ID.unique(),
       {
