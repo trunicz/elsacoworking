@@ -45,78 +45,68 @@ export const FormPost = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className="grid gap-5 py-10 text-xl">
+    <form onSubmit={handleFormSubmit} className="space-y-4 sm:space-y-6">
       <div>
-        <label
-          htmlFor="title"
-          className="block text-lg font-medium text-gray-700"
-        >
-          Titulo
+        <label htmlFor="title" className="block text-sm font-medium text-white">
+          Título
         </label>
         <input
-          placeholder="Escribe aquí.."
+          placeholder="Escribe aquí..."
           type="text"
           id="title"
           name="title"
           onChange={handleUpdateTitle}
           required
-          className="mt-1 block w-full px-3 py-2 bg-neutral-50 min-h-12 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+          className="mt-1 p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm  disabled:opacity-50 disabled:pointer-events-none  border border-gray focus:outline-none"
         />
         <span className="text-sm text-neutral-400">Slug: {slugValue}</span>
       </div>
       <div className="hidden">
         <input
-          placeholder="Escribe aquí.."
           type="text"
           id="slug"
           name="slug"
           required
           value={slugValue}
-          className="mt-1 w-full px-3 py-2 bg-neutral-50 min-h-12 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+          className="mt-1 p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm  disabled:opacity-50 disabled:pointer-events-none  border border-gray focus:outline-none"
         />
       </div>
       <div>
         <label
           htmlFor="description"
-          className="block text-lg font-medium text-gray-700"
+          className="block text-sm font-medium text-white"
         >
           Descripción
         </label>
         <input
-          placeholder="Escribe aqui.."
+          placeholder="Escribe aquí..."
           type="text"
           id="description"
           name="description"
           required
-          className="mt-1 block w-full px-3 py-2 bg-neutral-50 min-h-12 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+          className="mt-1 p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm  disabled:opacity-50 disabled:pointer-events-none  border border-gray focus:outline-none"
         />
       </div>
       <div>
         <label
           htmlFor="content"
-          className="block text-lg font-medium text-gray-700"
+          className="block text-sm font-medium text-white"
         >
           Contenido
         </label>
-        <div className="mt-1 font-euphemia w-full px-12 py-2 bg-neutral-50 min-h-12 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm relative flex">
-          <span className="bg-neutral-100 rounded-xl rounded-r-none rounded-tl-none absolute top-0 right-0 p-1 ">
-            Powered By{" "}
-            <a
-              className="text-sky-800 font-bold hover:underline"
-              target="_blank"
-              href="https://choya.tech"
-            >
-              Choya.Tech
-            </a>
-          </span>
+        <div className="mt-1  block w-full border-gray-200 rounded-lg text-sm  disabled:opacity-50 disabled:pointer-events-none  border border-gray focus:outline-none px-12 py-4">
           <Editor setContent={setContent} />
         </div>
       </div>
 
-      <div className="mx-auto">
-        <Button size="lg" type="submit">
+      <div className="flex justify-center">
+        <button
+          type="submit"
+          className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+        >
+          <i className="fas fa-plus mr-2" />
           Crear
-        </Button>
+        </button>
       </div>
     </form>
   );
