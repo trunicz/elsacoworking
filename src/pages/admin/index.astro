@@ -19,24 +19,45 @@ if (!user) {
       Bienvenido al panel de administración. Gestiona todos los aspectos del
       sitio.
     </p>
-    <ul class="grid grid-cols-3 gap-3 w-full">
-      <li class="">
-        <Button icon="lucide:pencil-line" to="/blog/new">Escribir Blog</Button>
-      </li>
-      <li class="">
-        <Button icon="lucide:mouse-pointer-click" to="/admin/requests"
-          >Ver Solicitudes</Button
+    <div class="grid grid-cols-3 gap-3 w-full">
+      <a
+        href="/blog/new"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-pencil-alt text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Escribir Blog</span>
+      </a>
+      <a
+        href="/admin/requests"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-user-plus text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Ver Solicitudes</span>
+      </a>
+      <a
+        href="/admin/clients"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-users text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Gestionar Clientes</span
         >
-      </li>
-      <li class="">
-        <Button icon="lucide:users-round" to="/admin/clients"
-          >Gestionar Clientes</Button
-        >
-      </li>
-      <li class="">
-        <Button icon="lucide:log-out" to="/admin/logout">Cerrar sesión</Button>
-      </li>
-    </ul>
+      </a>
+      <a
+        href="/admin/logout"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-sign-out-alt text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Cerrar sesión</span>
+      </a>
+    </div>
     <Caption />
   </main>
 </Layout>
