@@ -3,10 +3,11 @@ interface ImportMetaEnv {
   readonly app_name: string;
   readonly app_env: string;
   readonly PUBLIC_APPWRITE_APIKEY: string;
-  readonly PUBLIC_APPWRITE_BLOG: string;
+  readonly PUBLIC_APPWRITE_DB: string;
   readonly PUBLIC_APPWRITE_POSTS: string;
   readonly PUBLIC_APP_ROUTE: string;
   readonly APPWRITE_API_KEY: string;
+  readonly PUBLIC_APPWRITE_REQUESTS: string;
 }
 
 interface ImportMeta {
