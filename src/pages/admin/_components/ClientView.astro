@@ -1,5 +1,5 @@
 ---
-const { client, controls = false, status = "Pendiente" } = Astro.props;
+const { client, controls = false, status = "Pendiente", backTo = "/admin" } = Astro.props;
 import Layout from "@/src/core/Layout.astro";
 ---
 
@@ -92,11 +92,11 @@ import Layout from "@/src/core/Layout.astro";
 
       <div class="mt-8 flex gap-4 justify-center">
         <a
-          href="/admin/requests"
+          href={backTo}
           class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           <i class="fas fa-arrow-left mr-2"></i>
-          Volver a Solicitudes
+          Volver
         </a>
         {controls && (
           <a
