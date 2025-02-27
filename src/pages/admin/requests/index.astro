@@ -7,7 +7,7 @@ import { Query } from "node-appwrite";
 const clients = await databases
   .listDocuments(
     import.meta.env.PUBLIC_APPWRITE_DB,
-    import.meta.env.PUBLIC_APPWRITE_REQUESTS,
+    import.meta.env.PUBLIC_APPWRITE_CLIENTS,
     [Query.equal("isClient", false)]
   )
   .then(res => res.documents);

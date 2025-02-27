@@ -7,7 +7,7 @@ interface ImportMetaEnv {
   readonly PUBLIC_APPWRITE_POSTS: string;
   readonly PUBLIC_APP_ROUTE: string;
   readonly APPWRITE_API_KEY: string;
-  readonly PUBLIC_APPWRITE_REQUESTS: string;
+  readonly PUBLIC_APPWRITE_CLIENTS: string;
 }
 
 interface ImportMeta {

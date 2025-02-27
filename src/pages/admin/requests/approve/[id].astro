@@ -5,7 +5,7 @@ const { id } = Astro.params;
 
 await databases.updateDocument(
   import.meta.env.PUBLIC_APPWRITE_DB,
-  import.meta.env.PUBLIC_APPWRITE_REQUESTS,
+  import.meta.env.PUBLIC_APPWRITE_CLIENTS,
   id as string,
   {
     isClient: true,
