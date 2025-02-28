@@ -5,11 +5,10 @@ import react from '@astrojs/react';
 
 import icon from 'astro-icon';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   output: 'server',
   integrations: [tailwind(), react(), icon()],
-
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: cloudflare(),
 });

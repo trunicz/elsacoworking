@@ -1,7 +1,7 @@
-import { Client, Account, Databases } from "node-appwrite";
+import { Client, Account, Databases, Messaging, ID } from "node-appwrite";
 
 // The name of your cookie that will store the session
-export const SESSION_COOKIE = "my-custom-session";
+export const SESSION_COOKIE = "ework-session";
 
 const client = new Client()
   .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
@@ -46,6 +46,29 @@ export function createSessionClient(request) {
       return new Account(client);
     },
   };
+}
+
+const messaging = new Messaging(client)
+
+export async function sendEmail(subject, html) {
+
+  console.log(import.meta.env.PUBLIC_EMAIL_USER_ID);
+
+  const message = await messaging.createEmail(
+    ID.unique(),                // messageId (unique)
+    subject,        // subject
+    html,    // content (puede ser HTML o texto)
+    [],                         // topics (si los usas)
+    [import.meta.env.PUBLIC_EMAIL_USER_ID], // users => array con emails, userIDs o phone
+    [],                         // targets
+    [],                         // cc
+    [],                         // bcc
+    [],                         // attachments (IDs de archivos en Appwrite)
+    false,                      // draft
+    true                        // html => true si `content` es HTML
+    // scheduledAt => p.ej. "2025-03-15T10:00:00Z" para programar envío
+  );
+  return message;
 }
 
 // Helper function to parse cookies
