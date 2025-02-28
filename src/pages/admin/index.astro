@@ -1,5 +1,4 @@
 ---
-import Header from "@/src/core/components/Header.astro";
 import Layout from "@/src/core/Layout.astro";
 import Button from "./_components/Button.astro";
 import Caption from "./_components/Caption.astro";
@@ -12,29 +11,53 @@ if (!user) {
 ---
 
 <Layout>
-  <Header />
   <main
     class="flex flex-col min-h-[85vh] md:w-6/12 mx-auto items-center justify-center pt-12"
   >
-    <h1 class="text-4xl font-bold mb-4">Admin Dashboard</h1>
-    <p class="text-lg mb-6">
-      Welcome to the admin dashboard. Here you can manage all aspects of the
-      site.
+    <h1 class="text-3xl">Panel de Control</h1>
+    <p class="text-sm text-gray-600 mb-4 text-center">
+      Bienvenido al panel de administración. Gestiona todos los aspectos del
+      sitio.
     </p>
-    <ul class="grid grid-cols-3 gap-3 w-full">
-      <li class="">
-        <Button icon="lucide:pencil-line" to="/blog/new">Escribir Blog</Button>
-      </li>
-      <li class="">
-        <Button icon="lucide:mouse-pointer-click">Ver Solicitudes</Button>
-      </li>
-      <li class="">
-        <Button icon="lucide:users-round">Gestionar Clientes</Button>
-      </li>
-      <li class="">
-        <Button icon="lucide:log-out" to="/admin/logout">Cerrar sesión</Button>
-      </li>
-    </ul>
+    <div class="grid grid-cols-3 gap-3 w-full">
+      <a
+        href="/blog/new"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-pencil-alt text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Escribir Blog</span>
+      </a>
+      <a
+        href="/admin/requests"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-user-plus text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Ver Solicitudes</span>
+      </a>
+      <a
+        href="/admin/clients"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-users text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Gestionar Clientes</span
+        >
+      </a>
+      <a
+        href="/admin/logout"
+        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
+      >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+          <i class="fas fa-sign-out-alt text-gray-400 text-xl"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-900">Cerrar sesión</span>
+      </a>
+    </div>
     <Caption />
   </main>
 </Layout>

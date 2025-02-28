@@ -106,7 +106,7 @@ const ServicePlansCards = ({
 
           <motion.p
             layout
-            animate={{ opacity: isActive ? 1 : 0, opacity: isActive ? 1 : 0 }}
+            animate={{ opacity: isActive ? 1 : 0 }}
             transition={{ duration: 0.9 }}
             className={`text-start  overflow-hidden pt-3 md:pt-5 text-sm md:text-base ${
               isActive ? "block" : "hidden"

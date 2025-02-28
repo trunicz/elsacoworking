@@ -1,12 +1,11 @@
 ---
 import { Button } from "@/src/core/components/button";
 import Footer from "@/src/core/components/Footer.astro";
-import Header from "@/src/core/components/Header.astro";
 import Layout from "@/src/core/Layout.astro";
 import { databases } from "@/src/lib/appwrite";
 
 const { documents: posts } = await databases.listDocuments(
-  import.meta.env.PUBLIC_APPWRITE_BLOG,
+  import.meta.env.PUBLIC_APPWRITE_DB,
   import.meta.env.PUBLIC_APPWRITE_POSTS
 );
 
@@ -14,7 +13,6 @@ const { user } = Astro.locals;
 ---
 
 <Layout title="Sobre Nosotros">
-  <Header />
   <content class="min-h-[80vh] block w-1/2 py-20 mx-auto">
     <div class="flex items-center justify-between">
       <h1 class="text-5xl font-bold">Blog</h1>

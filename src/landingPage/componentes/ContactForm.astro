@@ -3,6 +3,7 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
 ---
 
 <section
+  id="contactForm"
   class="py-10 sm:py-16 md:py-20 bg-neutral-950 flex items-center justify-center px-4 sm:px-6 lg:px-8"
 >
   <div
@@ -15,7 +16,11 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
         detallada.
       </p>
     </div>
-    <form action="#" class="space-y-4 sm:space-y-6">
+    <form
+      action="/api/v1/submit-contact"
+      method="POST"
+      class="space-y-4 sm:space-y-6"
+    >
       <!-- Primera fila: Nombre y Apellido -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
@@ -23,8 +28,7 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
             >Nombre</label
           >
           <input
-            id="nombre"
-            name="nombre"
+            name="name"
             type="text"
             placeholder="Nombre"
             class="mt-1 p-3 sm:p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600"
@@ -35,8 +39,7 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
             >Apellido</label
           >
           <input
-            id="apellido"
-            name="apellido"
+            name="lastname"
             type="text"
             placeholder="Apellido"
             class="mt-1 p-3 sm:p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600"
@@ -50,12 +53,11 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
       <!-- Tercera fila: Paquete y Modalidad -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label for="paquete" class="block text-sm font-medium text-white"
+          <label for="plan" class="block text-sm font-medium text-white"
             >Paquete</label
           >
           <select
-            id="paquete"
-            name="paquete"
+            name="plan"
             class="mt-1 p-3 sm:p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600"
           >
             <option>Básico</option>
@@ -64,12 +66,11 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
           </select>
         </div>
         <div>
-          <label for="modalidad" class="block text-sm font-medium text-white"
+          <label for="mode" class="block text-sm font-medium text-white"
             >Modalidad</label
           >
           <select
-            id="modalidad"
-            name="modalidad"
+            name="mode"
             class="mt-1 p-3 sm:p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600"
           >
             <option>Presencial</option>
@@ -80,12 +81,11 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
 
       <!-- Método de Contacto -->
       <div>
-        <label for="metodoContacto" class="block text-sm font-medium text-white"
+        <label for="contact_type" class="block text-sm font-medium text-white"
           >Método de Contacto</label
         >
         <select
-          id="metodoContacto"
-          name="metodoContacto"
+          name="contact_type"
           class="mt-1 p-3 sm:p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600"
         >
           <option>Correo Electrónico</option>
@@ -96,12 +96,11 @@ import CitiesSelect from "../componentes/ContactForm/CitiesSelect";
 
       <!-- Información de Contacto -->
       <div>
-        <label for="infoContacto" class="block text-sm font-medium text-white"
+        <label for="contact_info" class="block text-sm font-medium text-white"
           >Información de Contacto</label
         >
         <input
-          id="infoContacto"
-          name="infoContacto"
+          name="contact_info"
           type="text"
           placeholder="Información de Contacto"
           class="mt-1 p-3 sm:p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:ring-neutral-600"

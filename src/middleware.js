@@ -6,7 +6,8 @@ export const onRequest = defineMiddleware(async ({ request, locals }, next) => {
     const { account } = createSessionClient(request);
     locals.user = await account.get();
   } catch (error) {
-    console.error("Auth Exception");
+    // Si no hay sesión, simplemente continuamos sin usuario
+    locals.user = null;
   }
   return next();
 });
