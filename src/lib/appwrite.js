@@ -26,7 +26,7 @@ export function createAdminClient() {
   };
 }
 
-// Session client, used to make requests on behalf of the logged in user
+// Session client, used to make applications on behalf of the logged in user
 export function createSessionClient(request) {
   const client = new Client()
     .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)

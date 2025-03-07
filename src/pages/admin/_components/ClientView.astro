@@ -152,18 +152,18 @@ import Layout from "@/src/core/Layout.astro";
         </a>
         {controls && (
           <a
-          href={`/admin/requests/approve/${client.$id}`}
+          href={`/admin/applications/approve/${client.$id}`}
           class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           <i class="fas fa-check mr-2"></i>
           Aprobar Solicitud
         </a>
         <a
-          href={`/admin/requests/reject/${client.$id}`}
+          href={`/admin/applications/archive/${client.$id}`}
           class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
-          <i class="fas fa-times mr-2"></i>
-          Rechazar Solicitud
+          <i class="fas fa-archive mr-2"></i>
+          Archivar Solicitud
         </a>
         )}
       </div>

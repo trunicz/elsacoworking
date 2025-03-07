@@ -3,7 +3,9 @@ const { client } = Astro.props;
 ---
 
 <a
-  href={`/admin/requests/${client.$id}`}
+  href={client.isArchived
+    ? `/admin/applications/archived/${client.$id}`
+    : `/admin/applications/${client.$id}`}
   class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 col-span-1 row-span-1 p-4 w-full mx-auto flex items-center justify-between"
 >
   <div class="flex items-center gap-4">
