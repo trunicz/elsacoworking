@@ -1,12 +1,36 @@
 ---
 import Layout from "@/src/core/Layout.astro";
 import Caption from "./_components/Caption.astro";
+import GridButton from "./_components/GridButton.astro";
 
 const { user } = Astro.locals;
 
 if (!user) {
   return Astro.redirect("/admin/login");
 }
+
+const gridButtons = [
+  {
+    href: "/blog/new",
+    icon: "fas fa-pencil-alt",
+    text: "Escribir Blog",
+  },
+  {
+    href: "/admin/requests",
+    icon: "fas fa-user-plus",
+    text: "Ver Solicitudes",
+  },
+  {
+    href: "/admin/clients",
+    icon: "fas fa-users",
+    text: "Gestionar Clientes",
+  },
+  {
+    href: "/admin/logout",
+    icon: "fas fa-sign-out-alt",
+    text: "Cerrar sesión",
+  },
+];
 ---
 
 <Layout>
@@ -19,43 +43,7 @@ if (!user) {
       sitio.
     </p>
     <div class="grid grid-cols-3 gap-3 w-full">
-      <a
-        href="/blog/new"
-        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
-      >
-        <div class="w-12 h-12 rounded-full flex items-center justify-center">
-          <i class="fas fa-pencil-alt text-gray-400 text-xl"></i>
-        </div>
-        <span class="text-sm font-medium text-gray-900">Escribir Blog</span>
-      </a>
-      <a
-        href="/admin/requests"
-        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
-      >
-        <div class="w-12 h-12 rounded-full flex items-center justify-center">
-          <i class="fas fa-user-plus text-gray-400 text-xl"></i>
-        </div>
-        <span class="text-sm font-medium text-gray-900">Ver Solicitudes</span>
-      </a>
-      <a
-        href="/admin/clients"
-        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
-      >
-        <div class="w-12 h-12 rounded-full flex items-center justify-center">
-          <i class="fas fa-users text-gray-400 text-xl"></i>
-        </div>
-        <span class="text-sm font-medium text-gray-900">Gestionar Clientes</span
-        >
-      </a>
-      <a
-        href="/admin/logout"
-        class="bg-white border border-gray-200 hover:bg-neutral-50 cursor-pointer transition-all duration-300 p-4 flex flex-col items-center gap-2"
-      >
-        <div class="w-12 h-12 rounded-full flex items-center justify-center">
-          <i class="fas fa-sign-out-alt text-gray-400 text-xl"></i>
-        </div>
-        <span class="text-sm font-medium text-gray-900">Cerrar sesión</span>
-      </a>
+      {gridButtons.map(button => <GridButton {...button} />)}
     </div>
     <Caption />
   </main>
