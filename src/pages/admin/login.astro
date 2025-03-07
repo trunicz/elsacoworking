@@ -1,5 +1,4 @@
 ---
-import { Button } from "@/src/core/components/button";
 import Layout from "@/src/core/Layout.astro";
 import { createAdminClient, SESSION_COOKIE } from "@/src/lib/appwrite";
 import Caption from "./_components/Caption.astro";
@@ -26,6 +25,7 @@ if (Astro.request.method === "POST") {
       `${email}`,
       `${password}`
     );
+
     Astro.cookies.set(SESSION_COOKIE, session.secret, {
       path: "/",
       expires: new Date(session.expire),
@@ -46,7 +46,7 @@ if (Astro.request.method === "POST") {
   <div class="flex flex-col flex-1 bg-gray-50">
     <div class="flex-1 flex items-center justify-center px-4">
       <form
-        method="POST"
+        method="post"
         class="w-full max-w-sm space-y-6 bg-white p-8 rounded-lg border border-gray-100"
       >
         <div class="space-y-2">
@@ -76,11 +76,13 @@ if (Astro.request.method === "POST") {
             placeholder="******************"
           />
         </div>
-        <div class="pt-2">
-          <a
-            class="w-full bg-gray-900 hover:bg-gray-800 text-white transition-colors"
-            >Ingresar</a
+        <div class="mt-auto flex gap-4 justify-center">
+          <button
+            type="submit"
+            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
           >
+            Iniciar Sesión
+          </button>
         </div>
       </form>
     </div>
