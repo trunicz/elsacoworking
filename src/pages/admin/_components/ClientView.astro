@@ -1,5 +1,5 @@
 ---
-const { client, controls = { isPending: false, isArchived: false }, status = "Pendiente", backTo = "/admin", canAddFiles = false } = Astro.props;
+const { client, controls = { isPending: false, isArchived: false }, status = "Pendiente", backTo = "/admin", canAddFiles = true } = Astro.props;
 import Layout from "@/src/core/Layout.astro";
 import { DropzoneComponent } from "./Dropzone";
 
@@ -86,23 +86,26 @@ import { DropzoneComponent } from "./Dropzone";
             {status}
           </div>
         </div>
-        <h3 class="text-lg font-medium text-gray-900 mb-4 border-t pt-6">Subir Archivos</h3>
-        {canAddFiles && (<form
-          action={`/api/v1/files/upload/${client.$id}`}
-          method="post"
-          enctype="multipart/form-data"
-          class="space-y-4"
-        >
-          <div class="flex flex-col gap-2">
-            <DropzoneComponent client:load />
-          </div>
-          <button
-            type="submit"
-            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-          >
-            Subir Archivos
-            </button>
-          </form>
+        {canAddFiles && (
+          <>
+            <h3 class="text-lg font-medium text-gray-900 mb-4 border-t pt-6">Subir Archivos</h3>
+            <form
+              action={`/api/v1/files/upload/${client.$id}`}
+              method="post"
+              enctype="multipart/form-data"
+              class="space-y-4"
+            >
+              <div class="flex flex-col gap-2">
+                <DropzoneComponent client:load />
+              </div>
+              <button
+                type="submit"
+                class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              >
+                Subir Archivos
+                </button>
+            </form>
+          </>
         )}
         {client.files.length > 0 && (
           <div class="border-t border-gray-200 pt-8">
