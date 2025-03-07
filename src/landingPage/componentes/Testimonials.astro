@@ -7,7 +7,7 @@ const response = await fetch(
 
 const testimonials = await response
   .json()
-  .then(response => response.result.reviews);
+  .then(response => response.result?.reviews);
 ---
 
 <div class="text-white bg-black min-h-[25vh] w-full">
