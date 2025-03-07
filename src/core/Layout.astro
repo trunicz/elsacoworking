@@ -41,7 +41,7 @@ const { title, dark = false } = Astro.props;
         user-select: text; /* Standard syntax */
       }
     </style>
-    <div class="h-screen">
+    <div class="h-screen flex flex-col">
       <Header isDarkMode={dark} />
       <slot />
     </div>
