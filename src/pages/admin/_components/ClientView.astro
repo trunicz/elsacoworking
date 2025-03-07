@@ -1,5 +1,5 @@
 ---
-const { client, controls = false, status = "Pendiente", backTo = "/admin", canAddFiles = false } = Astro.props;
+const { client, controls = { isPending: false, isArchived: false }, status = "Pendiente", backTo = "/admin", canAddFiles = false } = Astro.props;
 import Layout from "@/src/core/Layout.astro";
 
 ---
@@ -23,13 +23,9 @@ import Layout from "@/src/core/Layout.astro";
       <div class="space-y-6">
         <div class="border-t border-gray-200 pt-6">
           <h3 class="text-lg font-medium text-gray-900 mb-4">
-            Información de Contacto
+            Información de General
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <p class="text-sm text-gray-500">Teléfono</p>
-              <p class="text-gray-900">{client.phone || "No disponible"}</p>
-            </div>
             <div>
               <p class="text-sm text-gray-500">Fecha de Solicitud</p>
               <p class="text-gray-900">
@@ -150,21 +146,36 @@ import Layout from "@/src/core/Layout.astro";
           <i class="fas fa-arrow-left mr-2"></i>
           Volver
         </a>
-        {controls && (
+        {controls.isPending ? (
           <a
-          href={`/admin/applications/approve/${client.$id}`}
+          href={`/api/v1/applications/approve/${client.$id}`}
           class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           <i class="fas fa-check mr-2"></i>
           Aprobar Solicitud
         </a>
         <a
-          href={`/admin/applications/archive/${client.$id}`}
+          href={`/api/v1/applications/archive/${client.$id}`}
           class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           <i class="fas fa-archive mr-2"></i>
           Archivar Solicitud
         </a>
+        ):(<a
+          href={`/api/v1/clients/archive/${client.$id}`}
+          class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+        >
+          <i class="fas fa-archive mr-2"></i>
+          Archivar Cliente
+        </a>)}
+        {controls.isArchived && (
+          <a
+            href={`/api/v1/applications/unarchive/${client.$id}`}
+            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            <i class="fas fa-eye mr-2"></i>
+            Desarchivar Solicitud
+          </a>
         )}
       </div>
     </div>
