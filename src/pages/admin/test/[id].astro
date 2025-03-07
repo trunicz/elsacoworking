@@ -2,6 +2,8 @@
 import { storage, databases } from "@/src/lib/appwrite";
 import { ID } from "node-appwrite";
 
+const { id } = Astro.params;
+
 if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
 
@@ -13,7 +15,7 @@ if (Astro.request.method === "POST") {
     const currentDoc = await databases.getDocument(
       import.meta.env.PUBLIC_APPWRITE_DB,
       import.meta.env.PUBLIC_APPWRITE_CLIENTS,
-      "67ca7a960013d4b499c2"
+      id as string
     );
 
     // Guardar los files existentes
@@ -37,7 +39,7 @@ if (Astro.request.method === "POST") {
     const result = await databases.updateDocument(
       import.meta.env.PUBLIC_APPWRITE_DB,
       import.meta.env.PUBLIC_APPWRITE_CLIENTS,
-      "67ca7a960013d4b499c2",
+      id as string,
       {
         files: allFiles,
       }
@@ -46,5 +48,6 @@ if (Astro.request.method === "POST") {
   } catch (error) {
     console.error(error);
   }
+  return Astro.redirect(`/admin/applications/${id}`);
 }
 ---

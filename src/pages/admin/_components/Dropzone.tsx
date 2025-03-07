@@ -19,10 +19,10 @@ export function DropzoneComponent() {
 
     if (file.type.startsWith("image/")) {
       return (
-        <div key={index} className="relative w-40 h-40">
+        <div key={index} className="relative aspect-square w-full">
           <img
             src={fileUrl}
-            className="w-40 h-40 object-cover rounded-lg"
+            className="w-full h-full object-cover rounded-lg"
             onLoad={() => URL.revokeObjectURL(fileUrl)}
           />
           <span className="absolute bottom-0 left-0 right-0 text-xs bg-black/50 text-white truncate px-1 rounded-b-lg">
@@ -46,7 +46,7 @@ export function DropzoneComponent() {
     return (
       <div
         key={index}
-        className="relative w-40 h-40 bg-gray-100 rounded-lg flex flex-col items-center justify-center"
+        className="relative aspect-square w-full bg-gray-100 rounded-lg flex flex-col items-center justify-center"
       >
         <i className={`${icon} text-3xl text-gray-600`}></i>
         <span className="text-xs text-gray-600 mt-2 px-2 text-center truncate w-full">
@@ -85,7 +85,7 @@ export function DropzoneComponent() {
             O haz clic para seleccionar archivos
           </p>
         </div>
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 p-4 mt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 p-4 mt-4">
           {previews}
         </div>
       </Dropzone>
