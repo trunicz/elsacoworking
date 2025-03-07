@@ -1,5 +1,6 @@
 ---
 import Layout from "@/src/core/Layout.astro";
+import { DropzoneComponent } from "@/src/pages/admin/_components/Dropzone";
 ---
 
 <Layout>
@@ -12,23 +13,7 @@ import Layout from "@/src/core/Layout.astro";
       class="space-y-4"
     >
       <div class="flex flex-col gap-2">
-        <label for="files" class="text-sm text-gray-600"
-          >Seleccionar archivos</label
-        >
-        <input
-          type="file"
-          name="files"
-          id="files"
-          multiple
-          accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"
-          class="block w-full text-sm text-gray-500
-            file:mr-4 file:py-2 file:px-4
-            file:rounded-md file:border-0
-            file:text-sm file:font-medium
-            file:bg-gray-50 file:text-gray-700
-            hover:file:bg-gray-100
-            file:cursor-pointer"
-        />
+        <DropzoneComponent client:load />
       </div>
       <button
         type="submit"

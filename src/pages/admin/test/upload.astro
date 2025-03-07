@@ -1,3 +1,50 @@
 ---
+import { storage, databases } from "@/src/lib/appwrite";
+import { ID } from "node-appwrite";
 
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+
+  const files = formData.getAll("files");
+  const fileIds = [];
+
+  try {
+    // Obtener el documento actual para acceder a los files existentes
+    const currentDoc = await databases.getDocument(
+      import.meta.env.PUBLIC_APPWRITE_DB,
+      import.meta.env.PUBLIC_APPWRITE_CLIENTS,
+      "67ca7a960013d4b499c2"
+    );
+
+    // Guardar los files existentes
+    const existingFiles = currentDoc.files || [];
+
+    // Subir los nuevos archivos
+    for (const file of files) {
+      const fileId = await storage.createFile(
+        import.meta.env.PUBLIC_APPWRITE_STORAGE,
+        ID.unique(),
+        file as File
+      );
+
+      fileIds.push(fileId["$id"]);
+    }
+
+    // Combinar files existentes con nuevos
+    const allFiles = [...existingFiles, ...fileIds];
+
+    // Actualizar documento con todos los files
+    const result = await databases.updateDocument(
+      import.meta.env.PUBLIC_APPWRITE_DB,
+      import.meta.env.PUBLIC_APPWRITE_CLIENTS,
+      "67ca7a960013d4b499c2",
+      {
+        files: allFiles,
+      }
+    );
+    console.log("result", result);
+  } catch (error) {
+    console.error(error);
+  }
+}
 ---

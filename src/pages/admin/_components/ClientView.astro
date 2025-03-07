@@ -1,6 +1,7 @@
 ---
-const { client, controls = false, status = "Pendiente", backTo = "/admin" } = Astro.props;
+const { client, controls = false, status = "Pendiente", backTo = "/admin", canAddFiles = false } = Astro.props;
 import Layout from "@/src/core/Layout.astro";
+
 ---
 
 <Layout title="Detalles de Solicitud">
@@ -12,18 +13,18 @@ import Layout from "@/src/core/Layout.astro";
         >
           <i class="fas fa-user text-gray-400 text-2xl"></i>
         </div>
-        <h1 class="text-2xl font-semibold text-gray-900">
+        <h2 class="text-2xl font-semibold text-gray-900">
           {client.name}
           {client.lastname}
-        </h1>
+        </h2>
         <p class="text-gray-500 mt-1">{client.email}</p>
       </div>
 
       <div class="space-y-6">
         <div class="border-t border-gray-200 pt-6">
-          <h2 class="text-lg font-medium text-gray-900 mb-4">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">
             Información de Contacto
-          </h2>
+          </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p class="text-sm text-gray-500">Teléfono</p>
@@ -39,9 +40,9 @@ import Layout from "@/src/core/Layout.astro";
         </div>
 
         <div class="border-t border-gray-200 pt-6">
-          <h2 class="text-lg font-medium text-gray-900 mb-4">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">
             Detalles de la Solicitud
-          </h2>
+          </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p class="text-sm text-gray-500">Estado</p>
@@ -78,9 +79,9 @@ import Layout from "@/src/core/Layout.astro";
         </div>
 
         <div class="border-t border-gray-200 pt-6">
-          <h2 class="text-lg font-medium text-gray-900 mb-4">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">
             Estado de la Solicitud
-          </h2>
+          </h3>
           <div
             class="inline-flex items-center px-3 py-1 rounded-full text-sm"
             class:list={["bg-gray-100 text-gray-800"]}
@@ -88,6 +89,57 @@ import Layout from "@/src/core/Layout.astro";
             {status}
           </div>
         </div>
+        {client.files.length > 0 && (
+          <div class="border-t border-gray-200 pt-8">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">
+              Documentos
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {client.files.map((file: string) => {
+                const imageUrl = `https://cloud.appwrite.io/v1/storage/buckets/${import.meta.env.PUBLIC_APPWRITE_STORAGE}/files/${file}/view?project=${import.meta.env.PUBLIC_APPWRITE_PROJECT}`;
+                const downloadUrl = `https://cloud.appwrite.io/v1/storage/buckets/${import.meta.env.PUBLIC_APPWRITE_STORAGE}/files/${file}/download?project=${import.meta.env.PUBLIC_APPWRITE_PROJECT}`;
+                return (
+                  <div class="bg-white p-3 rounded border hover:shadow-sm transition-shadow">
+                    <img
+                      src={imageUrl}
+                      onerror="this.src='/preview.png'"
+                      alt="Documento" 
+                      class="w-full h-48 object-cover rounded cursor-pointer"
+                      onclick={`document.getElementById('dialog-${file}').showModal()`}
+                    />
+                    <p class="text-sm text-gray-500 mt-2 truncate">Documento_{file.slice(0,8)}</p>
+                    <dialog id={`dialog-${file}`} class="p-2 rounded max-w-3xl w-full">
+                      <div class="relative">
+                        <img
+                          src={imageUrl}
+                          alt="Documento"
+                          onerror="this.src='/preview.png'"
+                          class="w-full h-auto rounded"
+                        />
+                        <div class="absolute top-2 right-2 flex gap-6">
+                          <a
+                            href={downloadUrl}
+                            download
+                            class="outline-none text-3xl font-thin"
+                            title="Descargar"
+                          >
+                            <i class="fas fa-file-download"></i>
+                          </a>
+                          <button
+                            onclick={`document.getElementById('dialog-${file}').close()`}
+                            class="outline-none text-3xl font-thin"
+                          >
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </dialog>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       <div class="mt-8 flex gap-4 justify-center">
