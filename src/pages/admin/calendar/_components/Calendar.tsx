@@ -4,30 +4,86 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
 import { useEffect, useState, useRef } from "react";
+import { databases } from "@/src/lib/appwrite";
+import { Query } from "node-appwrite";
 
 export default function Calendar() {
   const [title, setTitle] = useState("");
+  const [time, setTime] = useState("");
   const [color, setColor] = useState("#cccccc");
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [clients, setClients] = useState<any[]>([]);
   const [events, setEvents] = useState<any[]>([]);
   const [eventToDelete, setEventToDelete] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const createEvent = (eventInfo: any) => {
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const documents = await databases
+          .listDocuments(
+            import.meta.env.PUBLIC_APPWRITE_DB,
+            import.meta.env.PUBLIC_APPWRITE_EVENTS
+          )
+          .then(response => {
+            const docs = response.documents;
+            docs.forEach(doc => {
+              doc.start = new Date(doc.start);
+              doc.end = new Date(doc.end);
+            });
+            return docs;
+          });
+        setEvents(documents);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    const fetchClients = async () => {
+      try {
+        await databases
+          .listDocuments(
+            import.meta.env.PUBLIC_APPWRITE_DB,
+            import.meta.env.PUBLIC_APPWRITE_CLIENTS,
+            [Query.equal("isClient", true)]
+          )
+          .then(response => {
+            const docs = response.documents;
+            setClients(docs);
+          });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchEvents();
+    fetchClients();
+  }, [events]);
+
+  const createEvent = async (eventInfo: any) => {
     if (selectedEvent) {
       const newEvent = {
-        id: ID.unique(),
-        title: eventInfo.title,
+        title: eventInfo.title + " " + eventInfo.time,
         start: selectedEvent.start,
         end: selectedEvent.end,
         backgroundColor: eventInfo.color,
         borderColor: eventInfo.color,
         allDay: true,
       };
-      setEvents((prevEvents: any) => [...prevEvents, newEvent]);
-      setSelectedEvent(null);
-      setTitle("");
-      setColor("#cccccc");
+      try {
+        await databases.createDocument(
+          import.meta.env.PUBLIC_APPWRITE_DB,
+          import.meta.env.PUBLIC_APPWRITE_EVENTS,
+          ID.unique(),
+          newEvent
+        );
+        setEvents((prevEvents: any) => [...prevEvents, newEvent]);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setSelectedEvent(null);
+        setTitle("");
+        setTime("");
+        setColor("#cccccc");
+      }
     }
   };
 
@@ -36,7 +92,7 @@ export default function Calendar() {
   };
 
   const handleEventClick = (clickInfo: any) => {
-    setEventToDelete(clickInfo.event.id);
+    setEventToDelete(clickInfo.event.$id);
     dialogRef.current?.showModal();
   };
 
@@ -45,12 +101,21 @@ export default function Calendar() {
     dialogRef.current?.showModal();
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (eventToDelete) {
-      setEvents(prevEvents =>
-        prevEvents.filter(event => event.id !== eventToDelete)
-      );
-      setEventToDelete(null);
+      try {
+        await databases.deleteDocument(
+          import.meta.env.PUBLIC_APPWRITE_DB,
+          import.meta.env.PUBLIC_APPWRITE_EVENTS,
+          eventToDelete
+        );
+        setEvents(prevEvents =>
+          prevEvents.filter(event => event.$id !== eventToDelete)
+        );
+        setEventToDelete(null);
+      } catch (error) {
+        console.error(error);
+      }
     }
     dialogRef.current?.close();
   };
@@ -69,12 +134,38 @@ export default function Calendar() {
           </h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-600">Título</label>
-              <input
+              <label className="block text-sm text-gray-600">Cliente</label>
+              <select
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+                className="mt-1 outline-none border p-2 block w-full border-gray-200 focus:border-gray-400 focus:ring-0 rounded-none"
+              >
+                <option disabled selected>
+                  Seleccione un cliente
+                </option>
+                {clients.map(client => (
+                  <option
+                    key={client.$id}
+                    value={`${client.name} ${client.lastname}`}
+                  >
+                    {`${client.name} ${client.lastname}`}
+                  </option>
+                ))}
+              </select>
+              {/* <input
                 type="text"
                 name="title"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
+                className="mt-1 outline-none border p-2 block w-full border-gray-200 focus:border-gray-400 focus:ring-0 rounded-none"
+              /> */}
+              <label className="block text-sm text-gray-600 mt-3">
+                Hora de la cita
+              </label>
+              <input
+                type="time"
+                value={time}
+                onChange={e => setTime(e.target.value)}
                 className="mt-1 outline-none border p-2 block w-full border-gray-200 focus:border-gray-400 focus:ring-0 rounded-none"
               />
               <label className="block text-sm text-gray-600 mt-4">Color</label>
@@ -89,7 +180,7 @@ export default function Calendar() {
             <button
               type="button"
               className="w-full bg-gray-800 text-white py-2 px-4 hover:bg-gray-900 transition-colors"
-              onClick={() => createEvent({ title, color })}
+              onClick={() => createEvent({ title, time, color })}
               disabled={!selectedEvent || !title}
             >
               Agregar Evento
@@ -106,7 +197,7 @@ export default function Calendar() {
               .filter(event => event.start.getMonth() === new Date().getMonth())
               .map(event => (
                 <div
-                  key={event.id}
+                  key={event.$id}
                   className="flex items-center justify-between p-2 border-b border-gray-100"
                 >
                   <div className="flex items-center gap-2">
@@ -117,7 +208,7 @@ export default function Calendar() {
                     <span>{event.title}</span>
                   </div>
                   <button
-                    onClick={() => deleteEvent(event.id)}
+                    onClick={() => deleteEvent(event.$id)}
                     className="text-red-500 hover:text-red-700"
                   >
                     Eliminar

@@ -10,6 +10,7 @@ interface ImportMetaEnv {
   readonly PUBLIC_APPWRITE_CLIENTS: string;
   readonly PUBLIC_EMAIL_USER_ID: string;
   readonly PUBLIC_APPWRITE_STORAGE: string;
+  readonly PUBLIC_APPWRITE_EVENTS: string;
 }
 
 interface ImportMeta {
