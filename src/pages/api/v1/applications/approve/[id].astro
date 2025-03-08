@@ -1,5 +1,5 @@
 ---
-import { databases } from "@/src/lib/appwrite";
+import { databases } from "@/src/lib/appwrite.js";
 
 const { id } = Astro.params;
 
@@ -12,5 +12,5 @@ await databases.updateDocument(
   }
 );
 
-return Astro.redirect(`/admin/requests`);
+return Astro.redirect(`/admin/applications`);
 ---

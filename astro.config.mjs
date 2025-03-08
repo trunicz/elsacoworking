@@ -10,5 +10,11 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   output: 'server',
   integrations: [tailwind(), react(), icon()],
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    mode: 'directory',
+    runtime: {
+      mode: 'local',
+      type: 'pages',
+    }
+  }),
 });

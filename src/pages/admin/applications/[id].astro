@@ -12,8 +12,13 @@ try {
     id as string
   );
 } catch (error) {
-  return Astro.redirect("/admin/requests");
+  return Astro.redirect("/admin/applications");
 }
 ---
 
-<ClientView client={client} controls={true} backTo="/admin/requests" />
+<ClientView
+  client={client}
+  controls={{ isPending: true }}
+  backTo="/admin/applications"
+  canAddFiles={true}
+/>
