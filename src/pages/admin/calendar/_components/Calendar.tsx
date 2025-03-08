@@ -1,19 +1,22 @@
+import { ID } from "appwrite";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Calendar() {
   const [title, setTitle] = useState("");
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState("#cccccc");
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
   const [events, setEvents] = useState<any[]>([]);
+  const [eventToDelete, setEventToDelete] = useState<string | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const createEvent = (eventInfo: any) => {
     if (selectedEvent) {
       const newEvent = {
-        id: Date.now().toString(),
+        id: ID.unique(),
         title: eventInfo.title,
         start: selectedEvent.start,
         end: selectedEvent.end,
@@ -24,7 +27,7 @@ export default function Calendar() {
       setEvents((prevEvents: any) => [...prevEvents, newEvent]);
       setSelectedEvent(null);
       setTitle("");
-      setColor("#000000");
+      setColor("#cccccc");
     }
   };
 
@@ -33,17 +36,28 @@ export default function Calendar() {
   };
 
   const handleEventClick = (clickInfo: any) => {
-    if (confirm("¿Estás seguro de que deseas eliminar este evento?")) {
-      setEvents(prevEvents =>
-        prevEvents.filter(event => event.id !== clickInfo.event.id)
-      );
-    }
+    setEventToDelete(clickInfo.event.id);
+    dialogRef.current?.showModal();
   };
 
   const deleteEvent = (eventId: string) => {
-    if (confirm("¿Estás seguro de que deseas eliminar este evento?")) {
-      setEvents(prevEvents => prevEvents.filter(event => event.id !== eventId));
+    setEventToDelete(eventId);
+    dialogRef.current?.showModal();
+  };
+
+  const confirmDelete = () => {
+    if (eventToDelete) {
+      setEvents(prevEvents =>
+        prevEvents.filter(event => event.id !== eventToDelete)
+      );
+      setEventToDelete(null);
     }
+    dialogRef.current?.close();
+  };
+
+  const cancelDelete = () => {
+    setEventToDelete(null);
+    dialogRef.current?.close();
   };
 
   return (
@@ -88,26 +102,28 @@ export default function Calendar() {
             Eventos del Mes
           </h3>
           <div className="space-y-2">
-            {events.map(event => (
-              <div
-                key={event.id}
-                className="flex items-center justify-between p-2 border-b border-gray-100"
-              >
-                <div className="flex items-center gap-2">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: event.backgroundColor }}
-                  />
-                  <span>{event.title}</span>
-                </div>
-                <button
-                  onClick={() => deleteEvent(event.id)}
-                  className="text-red-500 hover:text-red-700"
+            {events
+              .filter(event => event.start.getMonth() === new Date().getMonth())
+              .map(event => (
+                <div
+                  key={event.id}
+                  className="flex items-center justify-between p-2 border-b border-gray-100"
                 >
-                  Eliminar
-                </button>
-              </div>
-            ))}
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: event.backgroundColor }}
+                    />
+                    <span>{event.title}</span>
+                  </div>
+                  <button
+                    onClick={() => deleteEvent(event.id)}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              ))}
             {events.length === 0 && (
               <p className="text-gray-500 text-sm">
                 No hay eventos programados
@@ -137,6 +153,27 @@ export default function Calendar() {
           editable={true}
         />
       </div>
+
+      <dialog ref={dialogRef} className="p-6 rounded-lg shadow-lg">
+        <h3 className="text-lg font-medium mb-4">Confirmar eliminación</h3>
+        <p className="mb-6">
+          ¿Estás seguro de que deseas eliminar este evento?
+        </p>
+        <div className="flex justify-end gap-4">
+          <button
+            onClick={cancelDelete}
+            className="px-4 py-2 text-gray-600 hover:text-gray-800"
+          >
+            Cancelar
+          </button>
+          <button
+            onClick={confirmDelete}
+            className="px-4 py-2 bg-red-500 text-white hover:bg-red-600 rounded"
+          >
+            Eliminar
+          </button>
+        </div>
+      </dialog>
     </div>
   );
 }
