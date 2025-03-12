@@ -1,13 +1,15 @@
 import { Client, Account, Databases, Messaging, ID, Storage } from "node-appwrite";
 
-// The name of your cookie that will store the session
+// COOKIES
 export const SESSION_COOKIE = "ework-session";
 
+// Appwrite client
 const client = new Client()
   .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
   .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT)
   .setKey(import.meta.env.APPWRITE_KEY);
 
+// Export the services you need
 export const databases = new Databases(client)
 export const storage = new Storage(client)
 
@@ -16,7 +18,7 @@ export function createAdminClient() {
   const client = new Client()
     .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
     .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT)
-    .setKey(import.meta.env.APPWRITE_KEY); // Set the API key here!
+    .setKey(import.meta.env.APPWRITE_KEY);
 
   // Return the services you need
   return {
