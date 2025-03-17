@@ -1,0 +1,21 @@
+---
+import { FormPost } from "@/src/blog/FormPost";
+import Footer from "@/src/core/components/Footer.astro";
+import Layout from "@/src/core/Layout.astro";
+
+const { user } = Astro.locals;
+
+if (!user) {
+  return Astro.redirect("/");
+}
+---
+
+<Layout title="Sobre Nosotros">
+  <content class="block w-1/2 py-20 mx-auto">
+    <section>
+      <h1 class="text-5xl font-bold">Crear Post</h1>
+      <FormPost client:load />
+    </section>
+  </content>
+  <Footer />
+</Layout>

@@ -1,0 +1,14 @@
+---
+import { createSessionClient, SESSION_COOKIE } from "@/src/lib/appwrite";
+
+const { account } = createSessionClient(Astro.request);
+
+// Delete the Appwrite session
+await account.deleteSession("current");
+
+// Delete the session cookie
+Astro.cookies.delete(SESSION_COOKIE);
+
+// Redirect the user to sign up page
+return Astro.redirect("/");
+---

@@ -1,0 +1,17 @@
+---
+import { Marqueee } from "./Marqueee";
+
+const response = await fetch(
+  "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJna9az53Ur4YR-GRdHgu0iWQ&fields=name,rating,reviews&key=AIzaSyCYRsKgL8gb6oAHg9N1t-pCj8k1-xBx2fE&language=es"
+);
+
+const testimonials = await response
+  .json()
+  .then(response => response.result?.reviews);
+---
+
+<div class="text-white bg-black min-h-[25vh] w-full">
+  <div class="container flex mx-auto items-center h-full">
+    <Marqueee testimonials={testimonials} client:only />
+  </div>
+</div>

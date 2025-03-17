@@ -1,0 +1,49 @@
+---
+import Header from "./components/Header.astro";
+
+const { title, dark = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <title>Elsa Coworking {title ? `| ${title}` : ""}</title>
+  </head>
+  <body>
+    <style>
+      @font-face {
+        font-family: "Avenir";
+        src: url("../fonts/AvenirBlack.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Euphemia";
+        src: url("../fonts/EuphemiaUCASRegular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      input {
+        -webkit-appearance: none;
+        -webkit-user-select: text; /* Chrome, Opera, Safari */
+        -moz-user-select: text; /* Firefox 2+ */
+        -ms-user-select: text; /* IE 10+ */
+        user-select: text; /* Standard syntax */
+      }
+    </style>
+    <div class="h-screen flex flex-col">
+      <Header isDarkMode={dark} />
+      <slot />
+    </div>
+  </body>
+</html>

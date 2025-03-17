@@ -1,0 +1,20 @@
+---
+import { databases } from "@/src/lib/appwrite";
+
+const { id } = Astro.params;
+
+try {
+  await databases.updateDocument(
+    import.meta.env.PUBLIC_APPWRITE_DB,
+    import.meta.env.PUBLIC_APPWRITE_CLIENTS,
+    id as string,
+    {
+      isArchived: false,
+    }
+  );
+} catch (error) {
+  console.error(error);
+} finally {
+  return Astro.redirect("/admin/applications");
+}
+---

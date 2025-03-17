@@ -1,0 +1,27 @@
+---
+import { twMerge } from "tailwind-merge";
+import { Icon } from "astro-icon/components";
+
+const { color, icon, to } = Astro.props as {
+  color: keyof typeof variantColors;
+  icon: string;
+  to: string;
+};
+
+const variantColors = {
+  alert: "bg-red-600",
+  info: "bg-cyan-600",
+  warning: "bg-amber-600",
+};
+---
+
+<a
+  href={to ? to : ``}
+  class={twMerge(
+    "p-4  text-white rounded-lg w-full flex flex-col items-center justify-center transition-all active:scale-95",
+    color ? variantColors[color] : "bg-gray-100 text-black hover:bg-gray-200"
+  )}
+>
+  <div class="text-5xl mx-auto">{icon ? <Icon name={icon} /> : null}</div>
+  <slot />
+</a>

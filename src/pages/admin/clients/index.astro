@@ -1,0 +1,40 @@
+---
+import Layout from "@/src/core/Layout.astro";
+import ClientCard from "@/src/pages/admin/clients/_components/ClientCard.astro";
+import { databases } from "@/src/lib/appwrite";
+import { Query } from "node-appwrite";
+
+const clients = await databases
+  .listDocuments(
+    import.meta.env.PUBLIC_APPWRITE_DB,
+    import.meta.env.PUBLIC_APPWRITE_CLIENTS,
+    [Query.equal("isClient", true)]
+  )
+  .then(res => res.documents);
+
+console.log(clients);
+---
+
+<Layout>
+  <main
+    class="flex flex-col gap-4 min-h-[85vh] p-4 md:w-8/12 lg:w-6/12 mx-auto"
+  >
+    <h2 class="text-2xl text-center py-6">Clientes</h2>
+    {
+      clients.length > 0 ? (
+        clients.map(client => <ClientCard client={client} />)
+      ) : (
+        <div class="text-center text-gray-500">No hay clientes</div>
+      )
+    }
+    <div class="mt-auto flex gap-4 justify-center">
+      <a
+        href="/admin"
+        class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+      >
+        <i class="fas fa-arrow-left mr-2"></i>
+        Volver a Panel de Control
+      </a>
+    </div>
+  </main>
+</Layout>

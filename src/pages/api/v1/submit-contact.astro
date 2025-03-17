@@ -1,0 +1,89 @@
+---
+import { databases, sendEmail } from "@/src/lib/appwrite";
+import { ID } from "appwrite";
+
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const data = {
+    name: formData.get("name"),
+    lastname: formData.get("lastname"),
+    state: formData.get("state"),
+    township: formData.get("township"),
+    plan: formData.get("plan"),
+    mode: formData.get("mode"),
+    contact_type: formData.get("contact_type"),
+    contact_info: formData.get("contact_info"),
+  };
+
+  try {
+    const response = await databases.createDocument(
+      import.meta.env.PUBLIC_APPWRITE_DB,
+      import.meta.env.PUBLIC_APPWRITE_CLIENTS,
+      ID.unique(),
+      data
+    );
+    const htmlEmail = `
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <title>Nueva Solicitud de Contacto</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h1 style="color: #333;">Nueva Solicitud de Contacto</h1>
+      </div>
+
+      <div style="background: #f9f9f9; border-radius: 5px; padding: 20px; margin-bottom: 20px;">
+        <h2 style="color: #444; margin-bottom: 15px;">Información del Solicitante</h2>
+        <p><strong>Nombre:</strong> ${response.name} ${response.lastname}</p>
+        <p><strong>Estado:</strong> ${response.state}</p>
+        <p><strong>Municipio:</strong> ${response.township}</p>
+      </div>
+
+      <div style="background: #f9f9f9; border-radius: 5px; padding: 20px; margin-bottom: 20px;">
+        <h2 style="color: #444; margin-bottom: 15px;">Detalles de la Solicitud</h2>
+        <p><strong>Plan:</strong> ${response.plan}</p>
+        <p><strong>Modalidad:</strong> ${response.mode}</p>
+        <p><strong>Tipo de Contacto:</strong> ${response.contact_type}</p>
+        <p><strong>Información de Contacto:</strong> ${response.contact_info}</p>
+      </div>
+
+      <div style="text-align: center; color: #666; font-size: 12px; margin-top: 30px;">
+        <p>Este es un correo automático, por favor no responder.</p>
+      </div>
+    </body>
+    </html>
+    `;
+    const email = await sendEmail(
+      "🌵Choyatech - Nueva Solicitud de Contacto",
+      htmlEmail
+    );
+    console.log(email);
+  } catch (error) {
+    console.error(error);
+    return Astro.redirect("/#contactForm");
+  }
+  return Astro.redirect("/#contactForm");
+}
+
+/*
+ {
+  name: 'Gerry',
+  lastname: 'Powels',
+  state: 'Aguascalientes',
+  township: 'Aguascalientes',
+  plan: 'Básico',
+  mode: 'Presencial',
+  contact_type: 'Teléfono',
+  contact_info: '6151597430',
+  '$id': '67c16418003c917d518e',
+  '$permissions': [],
+  '$createdAt': '2025-02-28T07:21:58.890+00:00',
+  '$updatedAt': '2025-02-28T07:21:58.890+00:00',
+  isClient: false,
+  '$databaseId': '67aecbff000a4be61d53',
+  '$collectionId': '67bc10d0000781cdb34f'
+}
+ */
+---

@@ -2,10 +2,26 @@
 import Header from "../../core/components/Header.astro";
 import Footer from "../../core/components/Footer.astro";
 import Hero from "../componentes/Hero.astro";
+import Testimonials from "../componentes/Testimonials.astro";
+import Services from "../componentes/Services";
+import Benefits from "../componentes/Benefits";
+import Faqs from "../componentes/Faqs";
+import ContactForm from "../componentes/ContactForm.astro";
 ---
 
-<main class="flex flex-col max-w-[720px] mx-auto">
-  <Header />
-  <Hero class="" />
+<main class="">
+  <div
+    class="bg-[url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDdiZDNyODR0amp6dGhiOTdrenljN2pmengwdGFtZG1kZWxpYjNuNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LRg9gfVZkT7plNE24K/giphy.webp)] bg-fixed bg-cover bg-center w-full h-screen"
+  >
+    <div class="bg-black/60 h-full flex flex-col">
+      <Hero />
+      <Testimonials />
+    </div>
+  </div>
+  <Services client:load />
+  <div class="bg-[#EBEBEB]"><Benefits client:load /></div>
+  <div class="bg-black"><ContactForm /></div>
+  <Faqs client:load />
+
   <Footer />
 </main>

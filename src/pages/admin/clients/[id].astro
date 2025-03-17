@@ -1,0 +1,24 @@
+---
+import { databases } from "@/src/lib/appwrite";
+import ClientView from "../_components/ClientView.astro";
+
+const { id } = Astro.params;
+
+let client;
+try {
+  client = await databases.getDocument(
+    import.meta.env.PUBLIC_APPWRITE_DB,
+    import.meta.env.PUBLIC_APPWRITE_CLIENTS,
+    id as string
+  );
+} catch (error) {
+  return Astro.redirect("/admin/clients");
+}
+---
+
+<ClientView
+  client={client}
+  controls={false}
+  status="Aprobado"
+  backTo="/admin/clients"
+/>
